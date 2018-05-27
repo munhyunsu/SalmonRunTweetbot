@@ -3,4 +3,4 @@ Salmon run reminder: Tweets salmon run schedule
 
 # Created by
 lapiren
-LuHa
+LunaticHarmony(munhyunsu@gmail.com)
