@@ -3,7 +3,7 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## Featrues
 - Search tweets by hashtag and retweet them
-- Get infos
+- Get schedules from Splatoon wiki
 
 # Created by
 lapiren
