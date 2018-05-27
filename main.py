@@ -75,6 +75,8 @@ def should_post(salmon1_start, salmon1_end):
     if (end_sec <= 0) and (end_sec >= -3600):
         end = True
 
+    print(datetime.datetime.now(), salmon1_start, salmon1_end, start, plan, end)
+
     return (start, plan, end)
 
 
