@@ -6,5 +6,5 @@ Salmon run reminder: Tweets salmon run schedule
 - Get schedules from Splatoon wiki
 
 # Created by
-lapiren
-LunaticHarmony(munhyunsu@gmail.com)
+- lapiren
+- LunaticHarmony(munhyunsu@gmail.com)

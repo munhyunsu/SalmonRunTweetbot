@@ -18,11 +18,11 @@ def main(argv = sys.argv):
     if start == True:
         text = '''[연어런 시작]
 시간: {0} - {1}
-스테이지: {2}, {3}
-무기: {4}, {5},
-{6}, {7},
-{8}, {9},
-{10}, {11}'''.format(salmon1_start.strftime('%m/%d %H:%M'), salmon1_end.strftime('%m/%d %H:%M'),
+스테이지: {2}/{3}
+무기: {4}/{5}
+{6}/{7}
+{8}/{9}
+{10}/{11}'''.format(salmon1_start.strftime('%m/%d %H:%M'), salmon1_end.strftime('%m/%d %H:%M'),
                                    stage1, st_en_jp[stage1],
                                    weapon1[0], wp_en_jp[weapon1[0]],
                                    weapon1[1], wp_en_jp[weapon1[1]],
@@ -32,11 +32,11 @@ def main(argv = sys.argv):
     if plan == True:
         text = '''[연어런 예정]
 시간: {0} - {1}
-스테이지: {2}, {3}
-무기: {4}, {5},
-{6}, {7},
-{8}, {9},
-{10}, {11}'''.format(salmon1_start.strftime('%m/%d %H:%M'), salmon1_end.strftime('%m/%d %H:%M'),
+스테이지: {2}/{3}
+무기: {4}/{5}
+{6}/{7}
+{8}/{9}
+{10}/{11}'''.format(salmon1_start.strftime('%m/%d %H:%M'), salmon1_end.strftime('%m/%d %H:%M'),
                                    stage1, st_en_jp[stage1],
                                    weapon1[0], wp_en_jp[weapon1[0]],
                                    weapon1[1], wp_en_jp[weapon1[1]],
@@ -46,11 +46,11 @@ def main(argv = sys.argv):
     if end == True:
         text = '''[연어런 끝/다음 연어런]
 시간: {0} - {1}
-스테이지: {2}, {3}
-무기: {4}, {5},
-{6}, {7},
-{8}, {9},
-{10}, {11}'''.format(salmon2_start.strftime('%m/%d %H:%M'), salmon2_end.strftime('%m/%d %H:%M'),
+스테이지: {2}/{3}
+무기: {4}/{5}
+{6}/{7}
+{8}/{9}
+{10}/{11}'''.format(salmon2_start.strftime('%m/%d %H:%M'), salmon2_end.strftime('%m/%d %H:%M'),
                                    stage2, st_en_jp[stage2],
                                    weapon2[0], wp_en_jp[weapon2[0]],
                                    weapon2[1], wp_en_jp[weapon2[1]],
