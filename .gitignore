@@ -1,3 +1,7 @@
+.idea/
+Gspread-39d43309c65c.json
+tweet_key.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

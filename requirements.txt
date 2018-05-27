@@ -1,0 +1,4 @@
+tweepy
+gspread
+oauth2client
+BeautifulSoup4
