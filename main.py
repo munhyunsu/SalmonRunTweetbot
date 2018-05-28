@@ -14,6 +14,9 @@ def main(argv = sys.argv):
     (salmon1_start, salmon1_end, weapon1, stage1, salmon2_start, salmon2_end, weapon2, stage2) = get_schedule()
     (start, plan, end) = should_post(salmon1_start, salmon1_end)
 
+    # for debug
+    print(datetime.datetime.now(), salmon1_start, salmon1_end, start, plan, end)
+
     # switch
     text = None
     if start == True:
@@ -75,9 +78,6 @@ def should_post(salmon1_start, salmon1_end, now = datetime.datetime.now()):
     end_sec = (salmon1_end - now).total_seconds()
     if (end_sec <= (0+1800)) and (end_sec > (-3600+1800)):
         end = True
-
-    if __name__ == '__main__':
-        print(now, salmon1_start, salmon1_end, start, plan, end)
 
     return (start, plan, end)
 
