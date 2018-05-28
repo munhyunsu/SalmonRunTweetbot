@@ -15,6 +15,7 @@ def main(argv = sys.argv):
     (start, plan, end) = should_post(salmon1_start, salmon1_end)
 
     # switch
+    text = None
     if start == True:
         text = '''[연어런 시작]
 시간: {0} - {1}
