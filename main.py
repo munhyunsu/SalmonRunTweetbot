@@ -62,20 +62,21 @@ def main(argv = sys.argv):
 
 
 
-def should_post(salmon1_start, salmon1_end):
+def should_post(salmon1_start, salmon1_end, now = datetime.datetime.now()):
     start = False
     plan = False
     end = False
-    start_sec = (salmon1_start - datetime.datetime.now()).total_seconds()
-    if (start_sec <= 3600) and (start_sec >= 0):
+    start_sec = (salmon1_start - now).total_seconds()
+    if (start_sec <= (3600-1800)) and (start_sec > (0-1800)):
         start = True
-    if (start_sec <= 21600) and (start_sec >= 18000):
+    if (start_sec <= (21600+1800)) and (start_sec > (18000+1800)):
         plan = True
-    end_sec = (salmon1_end - datetime.datetime.now()).total_seconds()
-    if (end_sec <= 0) and (end_sec >= -3600):
+    end_sec = (salmon1_end - now).total_seconds()
+    if (end_sec <= (0+1800)) and (end_sec > (-3600+1800)):
         end = True
 
-    print(datetime.datetime.now(), salmon1_start, salmon1_end, start, plan, end)
+    if __name__ == '__main__':
+        print(now, salmon1_start, salmon1_end, start, plan, end)
 
     return (start, plan, end)
 
