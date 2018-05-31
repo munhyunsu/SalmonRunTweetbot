@@ -50,4 +50,4 @@ def get_schedule():
 
     return (salmon1_start, salmon1_end, weapon1, stage1, salmon2_start, salmon2_end, weapon2, stage2)
 
-get_schedule()
+# get_schedule()
