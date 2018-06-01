@@ -1,3 +1,5 @@
+import datetime
+
 def should_post(salmon1_start, salmon1_end, now = datetime.datetime.now()):
     start = False
     plan = False
