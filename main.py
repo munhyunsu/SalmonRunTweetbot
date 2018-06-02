@@ -5,9 +5,12 @@ from web_crawler import WebCrawler
 from get_spread import get_translate_dict
 from get_schedule import get_schedule
 from twitter import execute_retweet, post_tweet
-from utils import should_post
+from utils import should_post, check_internet
 
 def main(argv = sys.argv):
+    if not check_internet():
+        sys.exit(0)
+
     # always execute
     execute_retweet()
 
