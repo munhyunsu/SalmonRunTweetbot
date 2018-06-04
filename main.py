@@ -8,6 +8,7 @@ from twitter import execute_retweet, post_tweet
 from utils import should_post, check_internet
 
 def main(argv = sys.argv):
+    # TODO(LuHa): change 30 minutes alg.
     if not check_internet():
         sys.exit(0)
 
