@@ -17,7 +17,7 @@ def should_post(salmon_times, now = datetime.datetime.now()):
 
     return (start, plan, end)
 
-def check_internet(max_try = 30, sleep_sec = 1, url = 'https://www.google.com/'):
+def check_internet(max_try = 30, sleep_sec = 60, url = 'https://www.google.com/'):
     for index in range(0, max_try):
         try:
             urllib.request.urlopen(url, timeout = 10)
