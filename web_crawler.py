@@ -108,6 +108,3 @@ class WebCrawler(object):
             url = self.baseurl + tags['href']
 
             print(url)
-
-c = WebCrawler()
-c.get_img_weapon()

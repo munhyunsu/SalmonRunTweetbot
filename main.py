@@ -1,17 +1,29 @@
 import sys
+import time
 import datetime
 
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
-from get_schedule import get_schedule
+# from get_schedule import get_schedule
 from twitter import execute_retweet, post_tweet
-from utils import should_post, check_internet
+from utils import should_post
 
 def main(argv = sys.argv):
-    # TODO(LuHa): change 30 minutes alg.
-    if not check_internet():
-        sys.exit(0)
+    for index in range(0, 30):
+        try:
+            _main(argv)
+            break
+        except:
+            if index == (30-1):
+                return -1
+            print('{0} Something is wrong(loop: {1})'.format(datetime.datetime.now(),
+                                                             index+1))
+            time.sleep(60)
+            continue
+    return 0
 
+
+def _main(argv):
     # always execute
     execute_retweet()
 
@@ -75,22 +87,6 @@ def main(argv = sys.argv):
 
     print('Updated {0}'.format(text))
 
-
-
-# def should_post(salmon1_start, salmon1_end, now = datetime.datetime.now()):
-#     start = False
-#     plan = False
-#     end = False
-#     start_sec = (salmon1_start - now).total_seconds()
-#     if (start_sec <= (3600-1800)) and (start_sec > (0-1800)):
-#         start = True
-#     if (start_sec <= (21600+1800)) and (start_sec > (18000+1800)):
-#         plan = True
-#     end_sec = (salmon1_end - now).total_seconds()
-#     if (end_sec <= (0+1800)) and (end_sec > (-3600+1800)):
-#         end = True
-#
-#     return (start, plan, end)
 
 
 if __name__ == '__main__':
