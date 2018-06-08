@@ -8,10 +8,10 @@ from get_spread import get_translate_dict
 from twitter import execute_retweet, post_tweet
 from utils import should_post
 
-def main(argv = sys.argv):
+def fault_torrent_main():
     for index in range(0, 30):
         try:
-            _main(argv)
+            main()
             break
         except:
             if index == (30-1):
@@ -23,7 +23,7 @@ def main(argv = sys.argv):
     return 0
 
 
-def _main(argv):
+def main(argv = sys.argv):
     # always execute
     execute_retweet()
 
@@ -90,4 +90,5 @@ def _main(argv):
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    #sys.exit(main())
+    sys.exit(fault_torrent_main())
