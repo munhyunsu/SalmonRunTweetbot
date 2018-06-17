@@ -4,7 +4,6 @@ import datetime
 
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
-# from get_schedule import get_schedule
 from twitter import execute_retweet, post_tweet
 from utils import should_post
 
