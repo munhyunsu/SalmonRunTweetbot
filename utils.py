@@ -3,9 +3,7 @@ import datetime
 import urllib.request
 
 def should_post(salmon_times, now = datetime.datetime.now()):
-    start = False
-    plan = False
-    end = False
+    (start, plan, end) = (False, False, False)
     start_sec = (salmon_times[0] - now).total_seconds()
     if (start_sec <= (3600-1800)) and (start_sec > (0-1800)):
         start = True
@@ -16,6 +14,8 @@ def should_post(salmon_times, now = datetime.datetime.now()):
         end = True
 
     return (start, plan, end)
+
+
 
 def check_internet(max_try = 30, sleep_sec = 60, url = 'https://www.google.com/'):
     '''
