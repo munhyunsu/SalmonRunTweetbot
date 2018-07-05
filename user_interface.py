@@ -21,5 +21,9 @@ class UserInterface(object):
         (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
         (salmon1_stage, salmon2_stage) = crawler.get_stage()
         (start, plan, end) = should_post(salmon1_times)
+
+        #TODO(LuHa): beautify
+        print('----*----*----*----*----*----*')
         print(datetime.datetime.now(), salmon1_times, start, plan, end)
+        print('----*----*----*----*----*----*')
 
