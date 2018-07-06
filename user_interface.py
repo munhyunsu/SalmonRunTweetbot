@@ -7,19 +7,19 @@ from utils import should_post
 status = {'INIT': 0}
 
 class UserInterface(object):
-    def __init__(self):
-        self.status = status['INIT']
+    def __init__(self, crawler):
+        self.crawler = crawler
 
     def first_screen(self):
         print('----*----*----*----*----*----*')
         print('|    SalmonRun Tweet Bot     |')
         print('----*----*----*----*----*----*')
 
-    def schedule(self, crawler):
+    def schedule(self):
         (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
-        (salmon1_times, salmon2_times) = crawler.get_schedule()
-        (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
-        (salmon1_stage, salmon2_stage) = crawler.get_stage()
+        (salmon1_times, salmon2_times) = self.crawler.get_schedule()
+        (salmon1_weapons, salmon2_weapons) = self.crawler.get_weapon()
+        (salmon1_stage, salmon2_stage) = self.crawler.get_stage()
         (start, plan, end) = should_post(salmon1_times)
 
         start_text = '''[연어런 시작]
