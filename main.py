@@ -34,7 +34,7 @@ def main(argv = sys.argv):
     (start, plan, end) = should_post(salmon1_times)
 
     # for debug
-    (start, plan, end) = (False, False, False)
+    # (start, plan, end) = (False, False, False)
     print(datetime.datetime.now(), salmon1_times, start, plan, end)
 
     # switch
