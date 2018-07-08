@@ -2,6 +2,7 @@
 Gspread-39d43309c65c.json
 tweet_key.py
 *.log
+*.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

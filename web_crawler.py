@@ -13,8 +13,14 @@ class WebCrawler(object):
         '''
         url = self.baseurl + '/wiki/Main_Page'
         if self.mainpage == None:
-            with urllib.request.urlopen(url) as f:
-                self.mainpage = f.read()
+            try:
+                with urllib.request.urlopen(url) as f:
+                    self.mainpage = f.read()
+                    with open('latest.html', 'wb') as latest:
+                        latest.write(self.mainpage)
+            except:
+                with open('latest.html', 'rb') as latest:
+                    self.mainpage = latest.read()
         return self.mainpage
 
     def get_schedule(self):

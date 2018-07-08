@@ -23,9 +23,6 @@ def fault_torrent_main():
 
 
 def main(argv = sys.argv):
-    # always execute
-    execute_retweet()
-
     # create crawler
     crawler = WebCrawler()
 
@@ -37,6 +34,7 @@ def main(argv = sys.argv):
     (start, plan, end) = should_post(salmon1_times)
 
     # for debug
+    (start, plan, end) = (False, False, False)
     print(datetime.datetime.now(), salmon1_times, start, plan, end)
 
     # switch
@@ -86,7 +84,12 @@ def main(argv = sys.argv):
 
     print('Updated {0}'.format(text))
 
+    # always execute
+    execute_retweet()
+
+
 
 
 if __name__ == '__main__':
+    #sys.exit(main())
     sys.exit(fault_torrent_main())
