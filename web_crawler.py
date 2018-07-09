@@ -114,3 +114,5 @@ class WebCrawler(object):
             url = self.baseurl + tags['href']
 
             print(url)
+
+    #TODO(LuHa): make WebCrawler Schduler - manage posting plan through pickle data.
