@@ -1,19 +1,15 @@
-import urllib
+import urllib.request
+from bs4 import BeautifulSoup as BS
+import datetime
 import pickle
 
-class Scheduler(object):
+from web_crawler import WebCrawler
+
+class Scheduler(WebCrawler):
     def __init__(self, baseurl = 'https://splatoonwiki.org'):
         self.baseurl = baseurl
         self.mainpage = self._get_mainpage()
         self.data = self._get_update_pickle()
-
-
-    def _get_mainpage(self):
-        url = self.baseurl + '/wiki/Main_Page'
-        with urllib.request.urlopen(url) as f:
-            mainpage = f.read()
-        return mainpage
-
 
     def _get_update_pickle(self):
         '''
@@ -30,16 +26,4 @@ class Scheduler(object):
         '''
         # with open('salmon.pickle','rb') as p:
 
-        pass
-
-
-    def get_schedule(self):
-        pass
-
-
-    def get_weapon(self):
-        pass
-
-
-    def get_stage(self):
         pass
