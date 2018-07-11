@@ -38,5 +38,5 @@ class Scheduler(WebCrawler):
         schedule_list = list()
         schedule_list.append(schedule)
         # with open('salmon.pickle','rb') as p:
-
+        #TODO(LuHa): save pickle and restore it in somewhere
         pass
