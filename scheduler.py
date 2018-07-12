@@ -25,6 +25,13 @@ class Scheduler(WebCrawler):
           {...}, {...}]
         :return:
         '''
+        # restore pickle from file
+        with open('salmon.pickle', 'rb') as f:
+            schedule_list = pickle.load(f)
+        if len(schedule_list) == 0:
+            schedule_list = list()
+
+        # get current schedule
         (salmon1_times, salmon2_times) = self.get_schedule()
         (salmon1_weapons, salmon2_weapons) = self.get_weapon()
         (salmon1_stage, salmon2_stage) = self.get_stage()
@@ -35,8 +42,10 @@ class Scheduler(WebCrawler):
                     'weapon3': salmon1_weapons[2],
                     'weapon4': salmon1_weapons[3],
                     'stage': salmon1_stage}
-        schedule_list = list()
-        schedule_list.append(schedule)
-        # with open('salmon.pickle','rb') as p:
-        #TODO(LuHa): save pickle and restore it in somewhere
-        pass
+
+        if schedule not in schedule_list:
+            schedule_list.append(schedule)
+
+        with open('salmon.pickle', 'wb') as f:
+            pickle.dump(schedule_list, f)
+
