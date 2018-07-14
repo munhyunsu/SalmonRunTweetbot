@@ -32,16 +32,17 @@ class Scheduler(WebCrawler):
             schedule_list = list()
 
         # get current schedule
+        # change our algorithm as policy of Splatoon2 WiKi
         (salmon1_times, salmon2_times) = self.get_schedule()
         (salmon1_weapons, salmon2_weapons) = self.get_weapon()
         (salmon1_stage, salmon2_stage) = self.get_stage()
-        schedule = {'start_time': salmon1_times[0],
-                    'end_time': salmon1_times[1],
-                    'weapon1': salmon1_weapons[0],
-                    'weapon2': salmon1_weapons[1],
-                    'weapon3': salmon1_weapons[2],
-                    'weapon4': salmon1_weapons[3],
-                    'stage': salmon1_stage}
+        schedule = {'start_time': salmon2_times[0],
+                    'end_time': salmon2_times[1],
+                    'weapon1': salmon2_weapons[0],
+                    'weapon2': salmon2_weapons[1],
+                    'weapon3': salmon2_weapons[2],
+                    'weapon4': salmon2_weapons[3],
+                    'stage': salmon2_stage}
 
         if schedule not in schedule_list:
             schedule_list.append(schedule)
