@@ -47,6 +47,11 @@ class Scheduler(WebCrawler):
         if schedule not in schedule_list:
             schedule_list.append(schedule)
 
+        # remove entry with end time expired over 1H
+
+        # sort by start_time!
+
+
         with open('salmon.pickle', 'wb') as f:
             pickle.dump(schedule_list, f)
 
