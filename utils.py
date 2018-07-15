@@ -16,6 +16,19 @@ def should_post(salmon_times, now = datetime.datetime.now()):
     return (start, plan, end)
 
 
+def should_post2(schedule, now = datetime.datetime.now()):
+    (start, plan, end) = (False, False, False)
+    start_sec = (schedule['start_time'] - now).total_seconds()
+    if (start_sec <= (3600-1800)) and (start_sec > (0-1800)):
+        start = True
+    if (start_sec <= (21600+1800)) and (start_sec > (18000+1800)):
+        plan = True
+    end_sec = (schedule['end_time'] - now).total_seconds()
+    if (end_sec <= (0+1800)) and (end_sec > (-3600+1800)):
+        end = True
+
+    return (start, plan, end)
+
 
 def check_internet(max_try = 30, sleep_sec = 60, url = 'https://www.google.com/'):
     '''

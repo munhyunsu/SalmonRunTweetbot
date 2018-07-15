@@ -5,7 +5,8 @@ import datetime
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
 from twitter import execute_retweet, post_tweet
-from utils import should_post
+from utils import should_post, should_post2
+from scheduler import Scheduler
 
 def fault_torrent_main():
     for index in range(0, 30):
@@ -24,18 +25,23 @@ def fault_torrent_main():
 
 def main(argv = sys.argv):
     # create crawler
-    crawler = WebCrawler()
+    # crawler = WebCrawler()
+    scheduler = Scheduler()
+
+    schedule_list = scheduler.get_schedule_list()
+    # print(schedule_list)
 
     # get_variables
     (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
-    (salmon1_times, salmon2_times) = crawler.get_schedule()
-    (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
-    (salmon1_stage, salmon2_stage) = crawler.get_stage()
-    (start, plan, end) = should_post(salmon1_times)
+    (start, plan, end) = should_post2(schedule_list[0])
+    # (salmon1_times, salmon2_times) = crawler.get_schedule()
+    # (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
+    # (salmon1_stage, salmon2_stage) = crawler.get_stage()
+    # (start, plan, end) = should_post(salmon1_times)
 
     # for debug
     # (start, plan, end) = (False, False, False)
-    print(datetime.datetime.now(), salmon1_times, start, plan, end)
+    print(datetime.datetime.now(), schedule_list[0], start, plan, end)
 
     # switch
     text = None
@@ -46,12 +52,12 @@ def main(argv = sys.argv):
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(salmon1_times[0].strftime('%m/%d %H:%M'), salmon1_times[1].strftime('%m/%d %H:%M'),
-                    salmon1_stage, st_en_jp[salmon1_stage],
-                    salmon1_weapons[0], wp_en_jp[salmon1_weapons[0]],
-                    salmon1_weapons[1], wp_en_jp[salmon1_weapons[1]],
-                    salmon1_weapons[2], wp_en_jp[salmon1_weapons[2]],
-                    salmon1_weapons[3], wp_en_jp[salmon1_weapons[3]])
+{10}/{11}'''.format(schedule_list[0]['start_time'].strftime('%m/%d %H:%M'), schedule_list[0]['end_time'].strftime('%m/%d %H:%M'),
+                    schedule_list[0]['stage'], st_en_jp[schedule_list[0]['stage']],
+                    schedule_list[0]['weapon1'], wp_en_jp[schedule_list[0]['weapon1']],
+                    schedule_list[0]['weapon2'], wp_en_jp[schedule_list[0]['weapon2']],
+                    schedule_list[0]['weapon3'], wp_en_jp[schedule_list[0]['weapon3']],
+                    schedule_list[0]['weapon4'], wp_en_jp[schedule_list[0]['weapon4']])
         post_tweet(text)
     if plan == True:
         text = '''[연어런 예정]
@@ -60,26 +66,26 @@ def main(argv = sys.argv):
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(salmon1_times[0].strftime('%m/%d %H:%M'), salmon1_times[1].strftime('%m/%d %H:%M'),
-                    salmon1_stage, st_en_jp[salmon1_stage],
-                    salmon1_weapons[0], wp_en_jp[salmon1_weapons[0]],
-                    salmon1_weapons[1], wp_en_jp[salmon1_weapons[1]],
-                    salmon1_weapons[2], wp_en_jp[salmon1_weapons[2]],
-                    salmon1_weapons[3], wp_en_jp[salmon1_weapons[3]])
+{10}/{11}'''.format(schedule_list[0]['start_time'].strftime('%m/%d %H:%M'), schedule_list[0]['end_time'].strftime('%m/%d %H:%M'),
+                    schedule_list[0]['stage'], st_en_jp[schedule_list[0]['stage']],
+                    schedule_list[0]['weapon1'], wp_en_jp[schedule_list[0]['weapon1']],
+                    schedule_list[0]['weapon2'], wp_en_jp[schedule_list[0]['weapon2']],
+                    schedule_list[0]['weapon3'], wp_en_jp[schedule_list[0]['weapon3']],
+                    schedule_list[0]['weapon4'], wp_en_jp[schedule_list[0]['weapon4']])
         post_tweet(text)
-    if end == True:
+    if end == True and len(schedule_list) > 1:
         text = '''[연어런 끝/다음 연어런]
 시간: {0} - {1}
 스테이지: {2}/{3}
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(salmon2_times[0].strftime('%m/%d %H:%M'), salmon2_times[1].strftime('%m/%d %H:%M'),
-                    salmon2_stage, st_en_jp[salmon2_stage],
-                    salmon2_weapons[0], wp_en_jp[salmon2_weapons[0]],
-                    salmon2_weapons[1], wp_en_jp[salmon2_weapons[1]],
-                    salmon2_weapons[2], wp_en_jp[salmon2_weapons[2]],
-                    salmon2_weapons[3], wp_en_jp[salmon2_weapons[3]])
+{10}/{11}'''.format(schedule_list[1]['start_time'].strftime('%m/%d %H:%M'), schedule_list[1]['end_time'].strftime('%m/%d %H:%M'),
+                    schedule_list[1]['stage'], st_en_jp[schedule_list[1]['stage']],
+                    schedule_list[1]['weapon1'], wp_en_jp[schedule_list[1]['weapon1']],
+                    schedule_list[1]['weapon2'], wp_en_jp[schedule_list[1]['weapon2']],
+                    schedule_list[1]['weapon3'], wp_en_jp[schedule_list[1]['weapon3']],
+                    schedule_list[1]['weapon4'], wp_en_jp[schedule_list[1]['weapon4']])
         post_tweet(text)
 
     print('Updated {0}'.format(text))
@@ -91,5 +97,5 @@ def main(argv = sys.argv):
 
 
 if __name__ == '__main__':
-    #sys.exit(main())
+    # sys.exit(main())
     sys.exit(fault_torrent_main())
