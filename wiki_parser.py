@@ -15,6 +15,14 @@ class SplatoonWikiParser(object):
         times = self.parse_salmon2_times()
         weapons = self.parse_salmon2_weapons()
         stage = self.parse_salmon2_stage()
+        schedule = {'start_time': times[0],
+                    'end_time': times[1],
+                    'weapon1': weapons[0],
+                    'weapon2': weapons[1],
+                    'weapon3': weapons[2],
+                    'weapon4': weapons[3],
+                    'stage': stage}
+        return schedule
 
     def parse_salmon2_times(self):
         soup = BS(self.html, 'html.parser')
