@@ -64,3 +64,5 @@ class SplatoonWikiParser(object):
 
         return stage
 
+
+parser = SplatoonWikiParser()
