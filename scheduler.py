@@ -4,7 +4,7 @@ import datetime
 import pickle
 from operator import itemgetter
 
-from web_crawler import WebCrawler
+from wiki_parser import SplatoonWikiParser
 
 PICKLENAME = 'salmonrun.pickle'
 
@@ -12,7 +12,18 @@ class Scheduler(object):
     def __init__(self, baseurl = 'https://splatoonwiki.org'):
         super().__init__()
         self.baseurl = baseurl
+        self.mainpage = self._get_mainpage()
         self.data = self._get_update_pickle()
+
+    def _get_mainpage(self):
+        '''
+        :return: HTML of main page
+        '''
+        url = self.baseurl + '/wiki/Main_Page'
+        if self.mainpage == None:
+            with urllib.request.urlopen(url) as f:
+                self.mainpage = f.read()
+        return self.mainpage
 
     def _get_update_pickle(self):
         '''
@@ -34,18 +45,13 @@ class Scheduler(object):
         except FileNotFoundError:
             schedule_list = list()
 
+        # create parser
+        parser = SplatoonWikiParser()
+        parser.feed(self.mainpage)
+
         # get current schedule
         # change our algorithm as policy of Splatoon2 WiKi
-        salmon_times = self.get_schedule()[1]
-        salmon_weapons = self.get_weapon()[1]
-        salmon_stage = self.get_stage()[1]
-        schedule = {'start_time': salmon_times[0],
-                    'end_time': salmon_times[1],
-                    'weapon1': salmon_weapons[0],
-                    'weapon2': salmon_weapons[1],
-                    'weapon3': salmon_weapons[2],
-                    'weapon4': salmon_weapons[3],
-                    'stage': salmon_stage}
+        schedule = parser.get_schedule()
 
         if schedule not in schedule_list:
             schedule_list.append(schedule)
