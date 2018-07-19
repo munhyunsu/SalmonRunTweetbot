@@ -8,7 +8,7 @@ from web_crawler import WebCrawler
 
 PICKLENAME = 'salmonrun.pickle'
 
-class Scheduler(WebCrawler):
+class Scheduler(object):
     def __init__(self, baseurl = 'https://splatoonwiki.org'):
         super().__init__()
         self.baseurl = baseurl
