@@ -12,10 +12,10 @@ class Scheduler(object):
     def __init__(self, baseurl = 'https://splatoonwiki.org'):
         super().__init__()
         self.baseurl = baseurl
-        self.mainpage = self._get_mainpage()
-        self.data = self._get_update_pickle()
+        self.mainpage = None
+        self.data = self.get_update_pickle()
 
-    def _get_mainpage(self):
+    def get_mainpage(self):
         '''
         :return: HTML of main page
         '''
@@ -25,7 +25,7 @@ class Scheduler(object):
                 self.mainpage = f.read()
         return self.mainpage
 
-    def _get_update_pickle(self):
+    def get_update_pickle(self):
         '''
         pickle data form
         [{'start_time': ,
@@ -47,7 +47,7 @@ class Scheduler(object):
 
         # create parser
         parser = SplatoonWikiParser()
-        parser.feed(self.mainpage)
+        parser.feed(self.get_mainpage())
 
         # get current schedule
         # change our algorithm as policy of Splatoon2 WiKi
@@ -66,6 +66,7 @@ class Scheduler(object):
         # sort by start_time!
         schedule_list.sort(key = itemgetter('start_time'))
 
+        # archive schedule data
         with open(PICKLENAME, 'wb') as f:
             pickle.dump(schedule_list, f)
 

@@ -41,7 +41,7 @@ def main(argv = sys.argv):
 
     # for debug
     # (start, plan, end) = (False, False, False)
-    print(datetime.datetime.now(), schedule_list[0], start, plan, end)
+    print(datetime.datetime.now(), schedule_list, start, plan, end)
 
     # TODO(LuHa): Need to split viewer and controller
     # BUG: end schedule was not posted
