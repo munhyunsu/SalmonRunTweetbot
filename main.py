@@ -7,6 +7,7 @@ from get_spread import get_translate_dict
 from twitter import execute_retweet, post_tweet
 from utils import should_post, should_post2
 from scheduler import Scheduler
+from posting_maker import tweet_maker
 
 def fault_torrent_main():
     for index in range(0, 30):
@@ -97,8 +98,7 @@ def main(argv = sys.argv):
     execute_retweet()
 
 
-
-
 if __name__ == '__main__':
     # sys.exit(main())
     sys.exit(fault_torrent_main())
+
