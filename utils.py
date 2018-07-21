@@ -30,6 +30,21 @@ def should_post2(schedule, now = datetime.datetime.now()):
     return (start, plan, end)
 
 
+def should_post3(schedule_list, now = datetime.datetime.now()):
+    result = dict()
+    for schedule in schedule_list:
+        start_sec = (schedule['start_time'] - now).total_seconds()
+        if (start_sec <= (3600 - 1800)) and (start_sec > (0 - 1800)):
+            result['start'] = schedule
+        if (start_sec <= (21600 + 1800)) and (start_sec > (18000 + 1800)):
+            result['plan'] = schedule
+        end_sec = (schedule['end_time'] - now).total_seconds()
+        if (end_sec <= (0 + 1800)) and (end_sec > (-3600 + 1800)):
+            result['end'] = schedule
+
+    return result
+
+
 def check_internet(max_try = 30, sleep_sec = 60, url = 'https://www.google.com/'):
     '''
     dedicated!

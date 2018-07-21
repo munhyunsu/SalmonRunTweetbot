@@ -5,7 +5,7 @@ import datetime
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
 from twitter import execute_retweet, post_tweet
-from utils import should_post, should_post2
+from utils import should_post, should_post2, should_post3
 from scheduler import Scheduler
 from posting_maker import tweet_maker
 
@@ -34,7 +34,8 @@ def main(argv = sys.argv):
 
     # get_variables
     # (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
-    (start, plan, end) = should_post2(schedule_list[0])
+    # (start, plan, end) = should_post2(schedule_list[0])
+    check_post = should_post3(schedule_list)
     # (salmon1_times, salmon2_times) = crawler.get_schedule()
     # (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
     # (salmon1_stage, salmon2_stage) = crawler.get_stage()
@@ -42,15 +43,15 @@ def main(argv = sys.argv):
 
     # for debug
     # (start, plan, end) = (True, True, True)
-    print(datetime.datetime.now(), schedule_list, start, plan, end)
+    print(datetime.datetime.now(), schedule_list, check_post.keys())
 
     # TODO(LuHa): Need to split viewer and controller
     # BUG: end schedule was not posted
 
     # switch
     text = None
-    if start == True:
-        schedule = schedule_list[0]
+    if 'start' in check_post:
+        schedule = check_post['start']
         text = tweet_maker.get_text(schedule, types='START')
 #         text = '''[연어런 시작]
 # 시간: {0} - {1}
@@ -65,8 +66,8 @@ def main(argv = sys.argv):
 #                     schedule['weapon3_en'], schedule['weapon3_jp'],
 #                     schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
-    if plan == True:
-        schedule = schedule_list[0]
+    if 'plan' in check_post:
+        schedule = check_post['plan']
         text = tweet_maker.get_text(schedule, types='PLAN')
 #         text = '''[연어런 예정]
 # 시간: {0} - {1}
@@ -81,8 +82,8 @@ def main(argv = sys.argv):
 #                     schedule['weapon3_en'], schedule['weapon3_jp'],
 #                     schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
-    if end == True and len(schedule_list) > 1:
-        schedule = schedule_list[1]
+    if 'end' in check_post:
+        schedule = check_post['end']
         text = tweet_maker.get_text(schedule, types='END')
 #         text = '''[연어런 끝/다음 연어런]
 # 시간: {0} - {1}
