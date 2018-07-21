@@ -51,11 +51,11 @@ class SplatoonWikiParser(object):
         # parse time
         salmon_start = salmon_text.split('-')[0].strip() + ' ' + str(datetime.datetime.now().year)
         salmon_start = datetime.datetime.strptime(salmon_start, '%b %d %H:%M %Y')
-        salmon_start = salmon_start + datetime.timedelta(hours=9)
+        salmon_start = salmon_start + datetime.timedelta(hours=9)# KTC = +9000
         times.append(salmon_start)
         salmon_end = salmon_text.split('-')[1].strip()[:-4] + ' ' + str(datetime.datetime.now().year)
         salmon_end = datetime.datetime.strptime(salmon_end, '%b %d %H:%M %Y')
-        salmon_end = salmon_end + datetime.timedelta(hours=9)
+        salmon_end = salmon_end + datetime.timedelta(hours=9)# KTC = +9000
         times.append(salmon_end)
 
         return times

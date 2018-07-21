@@ -51,51 +51,51 @@ def main(argv = sys.argv):
     text = None
     if start == True:
         schedule = schedule_list[0]
-        # text = tweet_maker(schedule, types='START')
-        text = '''[연어런 시작]
-시간: {0} - {1}
-스테이지: {2}/{3}
-무기: {4}/{5}
-{6}/{7}
-{8}/{9}
-{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
-                    schedule['stage_en'], schedule['stage_jp'],
-                    schedule['weapon1_en'], schedule['weapon1_jp'],
-                    schedule['weapon2_en'], schedule['weapon2_jp'],
-                    schedule['weapon3_en'], schedule['weapon3_jp'],
-                    schedule['weapon4_en'], schedule['weapon4_jp'])
+        text = tweet_maker(schedule, types='START')
+#         text = '''[연어런 시작]
+# 시간: {0} - {1}
+# 스테이지: {2}/{3}
+# 무기: {4}/{5}
+# {6}/{7}
+# {8}/{9}
+# {10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+#                     schedule['stage_en'], schedule['stage_jp'],
+#                     schedule['weapon1_en'], schedule['weapon1_jp'],
+#                     schedule['weapon2_en'], schedule['weapon2_jp'],
+#                     schedule['weapon3_en'], schedule['weapon3_jp'],
+#                     schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
     if plan == True:
         schedule = schedule_list[0]
-        # text = tweet_maker(schedule, types='PLAN')
-        text = '''[연어런 예정]
-시간: {0} - {1}
-스테이지: {2}/{3}
-무기: {4}/{5}
-{6}/{7}
-{8}/{9}
-{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
-                    schedule['stage_en'], schedule['stage_jp'],
-                    schedule['weapon1_en'], schedule['weapon1_jp'],
-                    schedule['weapon2_en'], schedule['weapon2_jp'],
-                    schedule['weapon3_en'], schedule['weapon3_jp'],
-                    schedule['weapon4_en'], schedule['weapon4_jp'])
+        text = tweet_maker(schedule, types='PLAN')
+#         text = '''[연어런 예정]
+# 시간: {0} - {1}
+# 스테이지: {2}/{3}
+# 무기: {4}/{5}
+# {6}/{7}
+# {8}/{9}
+# {10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+#                     schedule['stage_en'], schedule['stage_jp'],
+#                     schedule['weapon1_en'], schedule['weapon1_jp'],
+#                     schedule['weapon2_en'], schedule['weapon2_jp'],
+#                     schedule['weapon3_en'], schedule['weapon3_jp'],
+#                     schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
     if end == True and len(schedule_list) > 1:
         schedule = schedule_list[1]
-        # text = tweet_maker(schedule, types='END')
-        text = '''[연어런 끝/다음 연어런]
-시간: {0} - {1}
-스테이지: {2}/{3}
-무기: {4}/{5}
-{6}/{7}
-{8}/{9}
-{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
-                    schedule['stage_en'], schedule['stage_jp'],
-                    schedule['weapon1_en'], schedule['weapon1_jp'],
-                    schedule['weapon2_en'], schedule['weapon2_jp'],
-                    schedule['weapon3_en'], schedule['weapon3_jp'],
-                    schedule['weapon4_en'], schedule['weapon4_jp'])
+        text = tweet_maker(schedule, types='END')
+#         text = '''[연어런 끝/다음 연어런]
+# 시간: {0} - {1}
+# 스테이지: {2}/{3}
+# 무기: {4}/{5}
+# {6}/{7}
+# {8}/{9}
+# {10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+#                     schedule['stage_en'], schedule['stage_jp'],
+#                     schedule['weapon1_en'], schedule['weapon1_jp'],
+#                     schedule['weapon2_en'], schedule['weapon2_jp'],
+#                     schedule['weapon3_en'], schedule['weapon3_jp'],
+#                     schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
 
     print('Updated {0}'.format(text))
