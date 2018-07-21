@@ -26,20 +26,12 @@ def fault_torrent_main():
 
 def main(argv = sys.argv):
     # create crawler
-    # crawler = WebCrawler()
     scheduler = Scheduler()
 
     schedule_list = scheduler.get_schedule_list()
-    # print(schedule_list)
 
     # get_variables
-    # (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
-    # (start, plan, end) = should_post2(schedule_list[0])
     check_post = should_post3(schedule_list)
-    # (salmon1_times, salmon2_times) = crawler.get_schedule()
-    # (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
-    # (salmon1_stage, salmon2_stage) = crawler.get_stage()
-    # (start, plan, end) = should_post(salmon1_times)
 
     # for debug
     # (start, plan, end) = (True, True, True)
