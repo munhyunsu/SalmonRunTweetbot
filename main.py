@@ -14,11 +14,11 @@ def fault_torrent_main():
         try:
             main()
             break
-        except:
+        except Exception as e:
             if index == (30-1):
                 return -1
-            print('{0} Something is wrong(loop: {1})'.format(datetime.datetime.now(),
-                                                             index+1))
+            print('{0} Something is wrong(loop: {1}): {2}'.format(datetime.datetime.now(),
+                                                             index+1, e))
             time.sleep(60)
             continue
     return 0
@@ -41,7 +41,7 @@ def main(argv = sys.argv):
     # (start, plan, end) = should_post(salmon1_times)
 
     # for debug
-    # (start, plan, end) = (False, False, False)
+    (start, plan, end) = (True, True, True)
     print(datetime.datetime.now(), schedule_list, start, plan, end)
 
     # TODO(LuHa): Need to split viewer and controller
@@ -51,7 +51,7 @@ def main(argv = sys.argv):
     text = None
     if start == True:
         schedule = schedule_list[0]
-        text = tweet_maker(schedule, types='START')
+        text = tweet_maker.get_text(schedule, types='START')
 #         text = '''[연어런 시작]
 # 시간: {0} - {1}
 # 스테이지: {2}/{3}
@@ -67,7 +67,7 @@ def main(argv = sys.argv):
         post_tweet(text)
     if plan == True:
         schedule = schedule_list[0]
-        text = tweet_maker(schedule, types='PLAN')
+        text = tweet_maker.get_text(schedule, types='PLAN')
 #         text = '''[연어런 예정]
 # 시간: {0} - {1}
 # 스테이지: {2}/{3}
@@ -83,7 +83,7 @@ def main(argv = sys.argv):
         post_tweet(text)
     if end == True and len(schedule_list) > 1:
         schedule = schedule_list[1]
-        text = tweet_maker(schedule, types='END')
+        text = tweet_maker.get_text(schedule, types='END')
 #         text = '''[연어런 끝/다음 연어런]
 # 시간: {0} - {1}
 # 스테이지: {2}/{3}
