@@ -5,23 +5,42 @@ import datetime
 class SplatoonWikiParser(object):
     def __init__(self):
         self.html = bytes()
+        self.wp_en_jp = None
+        self.wp_en_ko = None
+        self.st_en_jp = None
+        self.st_en_ko = None
 
-    def feed(self, data, do_clear = True):
+    def feed_html(self, data, do_clear = True):
         if do_clear:
             self.html = bytes()
         self.html = self.html + data
 
+    def feed_translate_dict(self, wp_en_jp, wp_en_ko, st_en_jp, st_en_ko):
+        self.wp_en_jp = wp_en_jp
+        self.wp_en_ko = wp_en_ko
+        self.st_en_jp = st_en_jp
+        self.st_en_ko = st_en_ko
+
     def get_schedule(self):
+        wp_en_jp = self.wp_en_jp
+        # wp_en_ko = self.wp_en_ko
+        st_en_jp = self.st_en_jp
+        # st_en_ko = self.st_en_ko
         times = self.parse_salmon2_times()
         weapons = self.parse_salmon2_weapons()
         stage = self.parse_salmon2_stage()
         schedule = {'start_time': times[0],
                     'end_time': times[1],
-                    'weapon1': weapons[0],
-                    'weapon2': weapons[1],
-                    'weapon3': weapons[2],
-                    'weapon4': weapons[3],
-                    'stage': stage}
+                    'weapon1_en': weapons[0],
+                    'weapon1_jp': wp_en_jp[weapons[0]],
+                    'weapon2_en': weapons[1],
+                    'weapon2_jp': wp_en_jp[weapons[1]],
+                    'weapon3_en': weapons[2],
+                    'weapon3_jp': wp_en_jp[weapons[2]],
+                    'weapon4_en': weapons[3],
+                    'weapon4_jp': wp_en_jp[weapons[3]],
+                    'stage_en': stage,
+                    'stage_jp': st_en_jp[stage]}
         return schedule
 
     def parse_salmon2_times(self):

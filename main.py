@@ -33,7 +33,7 @@ def main(argv = sys.argv):
     # print(schedule_list)
 
     # get_variables
-    (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
+    # (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
     (start, plan, end) = should_post2(schedule_list[0])
     # (salmon1_times, salmon2_times) = crawler.get_schedule()
     # (salmon1_weapons, salmon2_weapons) = crawler.get_weapon()
@@ -50,46 +50,52 @@ def main(argv = sys.argv):
     # switch
     text = None
     if start == True:
+        schedule = schedule_list[0]
+        # text = tweet_maker(schedule, types='START')
         text = '''[연어런 시작]
 시간: {0} - {1}
 스테이지: {2}/{3}
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(schedule_list[0]['start_time'].strftime('%m/%d %H:%M'), schedule_list[0]['end_time'].strftime('%m/%d %H:%M'),
-                    schedule_list[0]['stage'], st_en_jp[schedule_list[0]['stage']],
-                    schedule_list[0]['weapon1'], wp_en_jp[schedule_list[0]['weapon1']],
-                    schedule_list[0]['weapon2'], wp_en_jp[schedule_list[0]['weapon2']],
-                    schedule_list[0]['weapon3'], wp_en_jp[schedule_list[0]['weapon3']],
-                    schedule_list[0]['weapon4'], wp_en_jp[schedule_list[0]['weapon4']])
+{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+                    schedule['stage_en'], schedule['stage_jp'],
+                    schedule['weapon1_en'], schedule['weapon1_jp'],
+                    schedule['weapon2_en'], schedule['weapon2_jp'],
+                    schedule['weapon3_en'], schedule['weapon3_jp'],
+                    schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
     if plan == True:
+        schedule = schedule_list[0]
+        # text = tweet_maker(schedule, types='PLAN')
         text = '''[연어런 예정]
 시간: {0} - {1}
 스테이지: {2}/{3}
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(schedule_list[0]['start_time'].strftime('%m/%d %H:%M'), schedule_list[0]['end_time'].strftime('%m/%d %H:%M'),
-                    schedule_list[0]['stage'], st_en_jp[schedule_list[0]['stage']],
-                    schedule_list[0]['weapon1'], wp_en_jp[schedule_list[0]['weapon1']],
-                    schedule_list[0]['weapon2'], wp_en_jp[schedule_list[0]['weapon2']],
-                    schedule_list[0]['weapon3'], wp_en_jp[schedule_list[0]['weapon3']],
-                    schedule_list[0]['weapon4'], wp_en_jp[schedule_list[0]['weapon4']])
+{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+                    schedule['stage_en'], schedule['stage_jp'],
+                    schedule['weapon1_en'], schedule['weapon1_jp'],
+                    schedule['weapon2_en'], schedule['weapon2_jp'],
+                    schedule['weapon3_en'], schedule['weapon3_jp'],
+                    schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
     if end == True and len(schedule_list) > 1:
+        schedule = schedule_list[1]
+        # text = tweet_maker(schedule, types='END')
         text = '''[연어런 끝/다음 연어런]
 시간: {0} - {1}
 스테이지: {2}/{3}
 무기: {4}/{5}
 {6}/{7}
 {8}/{9}
-{10}/{11}'''.format(schedule_list[1]['start_time'].strftime('%m/%d %H:%M'), schedule_list[1]['end_time'].strftime('%m/%d %H:%M'),
-                    schedule_list[1]['stage'], st_en_jp[schedule_list[1]['stage']],
-                    schedule_list[1]['weapon1'], wp_en_jp[schedule_list[1]['weapon1']],
-                    schedule_list[1]['weapon2'], wp_en_jp[schedule_list[1]['weapon2']],
-                    schedule_list[1]['weapon3'], wp_en_jp[schedule_list[1]['weapon3']],
-                    schedule_list[1]['weapon4'], wp_en_jp[schedule_list[1]['weapon4']])
+{10}/{11}'''.format(schedule['start_time'].strftime('%m/%d %H:%M'), schedule['end_time'].strftime('%m/%d %H:%M'),
+                    schedule['stage_en'], schedule['stage_jp'],
+                    schedule['weapon1_en'], schedule['weapon1_jp'],
+                    schedule['weapon2_en'], schedule['weapon2_jp'],
+                    schedule['weapon3_en'], schedule['weapon3_jp'],
+                    schedule['weapon4_en'], schedule['weapon4_jp'])
         post_tweet(text)
 
     print('Updated {0}'.format(text))

@@ -4,6 +4,7 @@ import datetime
 import pickle
 from operator import itemgetter
 
+from get_spread import get_translate_dict
 from wiki_parser import SplatoonWikiParser
 
 PICKLENAME = 'salmonrun.pickle'
@@ -46,8 +47,10 @@ class Scheduler(object):
             schedule_list = list()
 
         # create parser
+        (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
         parser = SplatoonWikiParser()
-        parser.feed(self.get_mainpage())
+        parser.feed_translate_dict(wp_en_jp, wp_en_ko, st_en_jp, st_en_ko)
+        parser.feed_html(self.get_mainpage())
 
         # get current schedule
         # change our algorithm as policy of Splatoon2 WiKi

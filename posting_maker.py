@@ -26,8 +26,8 @@ PLAN = '''[연어런 끝/다음 연어런]
 
 
 class TweetMaker(object):
-    def get_text(self, schedule, type):
-        text = getattr(sys.modules[__name__], type)
+    def get_text(self, schedule, types):
+        text = getattr(sys.modules[__name__], types)
 
         return text.format_map(schedule)
 
