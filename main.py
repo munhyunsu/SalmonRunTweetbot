@@ -41,7 +41,7 @@ def main(argv = sys.argv):
     # (start, plan, end) = should_post(salmon1_times)
 
     # for debug
-    (start, plan, end) = (True, True, True)
+    # (start, plan, end) = (True, True, True)
     print(datetime.datetime.now(), schedule_list, start, plan, end)
 
     # TODO(LuHa): Need to split viewer and controller
