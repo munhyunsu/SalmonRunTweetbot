@@ -27,7 +27,6 @@ def fault_torrent_main():
 def main(argv = sys.argv):
     # create crawler
     scheduler = Scheduler()
-
     schedule_list = scheduler.get_schedule_list()
 
     # get_variables
@@ -36,9 +35,6 @@ def main(argv = sys.argv):
     # for debug
     # (start, plan, end) = (True, True, True)
     print(datetime.datetime.now(), schedule_list, check_post.keys())
-
-    # TODO(LuHa): Need to split viewer and controller
-    # BUG: end schedule was not posted
 
     # switch
     text = None
