@@ -10,7 +10,7 @@ class SplatoonWikiParser(object):
         self.st_en_jp = None
         self.st_en_ko = None
 
-    def feed_html(self, data, do_clear = True):
+    def feed_html(self, data, do_clear=True):
         if do_clear:
             self.html = bytes()
         self.html = self.html + data
