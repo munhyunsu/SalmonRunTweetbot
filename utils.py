@@ -38,6 +38,7 @@ def should_post3(schedule_list, now = datetime.datetime.now()):
             result['start'] = schedule
         if (start_sec <= (21600 + 1800)) and (start_sec > (18000 + 1800)):
             result['plan'] = schedule
+        # BUG!!!
         end_sec = (schedule['end_time'] - now).total_seconds()
         if (end_sec <= (0 + 1800)) and (end_sec > (-3600 + 1800)):
             result['end'] = schedule
