@@ -8,6 +8,7 @@ from twitter import execute_retweet, post_tweet
 from utils import should_post, should_post2, should_post3
 from scheduler import Scheduler
 from posting_maker import tweet_maker
+from coordinator import Coordinator
 
 def fault_torrent_main():
     for index in range(0, 30):
@@ -28,27 +29,33 @@ def main(argv = sys.argv):
     # create crawler
     scheduler = Scheduler()
     schedule_list = scheduler.get_schedule_list()
+    # create coordinator
+    coordinator = Coordinator()
+    coordinator.feed_schedule_list(schedule_list)
 
     # get_variables
-    check_post = should_post3(schedule_list)
+    # check_post = should_post3(schedule_list)
 
     # for debug
     # (start, plan, end) = (True, True, True)
-    print(datetime.datetime.now(), schedule_list, check_post.keys())
+    print(datetime.datetime.now(), schedule_list)
 
     # switch
     text = None
-    if 'start' in check_post:
-        schedule = check_post['start']
+    start_schedule = coordinator.get_start_schedule()
+    if start_schedule is not None:
+        schedule = start_schedule
         text = tweet_maker.get_text(schedule, types='START')
         post_tweet(text)
-    if 'plan' in check_post:
-        schedule = check_post['plan']
-        text = tweet_maker.get_text(schedule, types='PLAN')
-        post_tweet(text)
-    if 'end' in check_post:
-        schedule = check_post['end']
+    end_schedule = coordinator.get_end_schedule()
+    if end_schedule is not None:
+        schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
+        post_tweet(text)
+    plan_schedule = coordinator.get_plan_schedule()
+    if plan_schedule is not None:
+        schedule = plan_schedule
+        text = tweet_maker.get_text(schedule, types='PLAN')
         post_tweet(text)
 
     print('Updated {0}'.format(text))

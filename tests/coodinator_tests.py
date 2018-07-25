@@ -12,6 +12,7 @@ GROUND_TRUTH = [{'start_time': datetime.datetime(2017, 7, 18, 9),
                 {'start_time': datetime.datetime(2017, 7, 23, 21),
                  'end_time': datetime.datetime(2017, 7, 25, 3)}]
 
+
 class CoordinatorTests(unittest.TestCase):
     def setUp(self):
         self.coord = coordinator.Coordinator()
