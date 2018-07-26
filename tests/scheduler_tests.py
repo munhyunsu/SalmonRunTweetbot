@@ -9,7 +9,7 @@ class SchedulerTests(unittest.TestCase):
         pass
 
     def tearDown(self):
-        pass
+        del self.scheduler
 
     def test_get_mainpage(self):
         pass
