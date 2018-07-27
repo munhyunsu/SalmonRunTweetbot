@@ -10,6 +10,8 @@ from scheduler import Scheduler
 from posting_maker import tweet_maker
 from coordinator import Coordinator
 
+# TODO(LuHa): Why it does not post salmonrun schedule? why fail?
+
 def fault_torrent_main():
     for index in range(0, 30):
         try:
