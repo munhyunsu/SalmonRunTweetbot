@@ -4,7 +4,8 @@ import twitter
 
 
 def main():
-    twitter.execute_retweet()
+    retweet = twitter.TweetBot()
+    retweet.retweet_by_keyword('#연어런')
 
 
 if __name__ == '__main__':
