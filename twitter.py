@@ -10,7 +10,6 @@ def get_api():
     return api
 
 
-
 def execute_retweet():
     api = get_api()
     # Search tweets contain keywords and retweet them
@@ -21,7 +20,28 @@ def execute_retweet():
         pass
 
 
-
 def post_tweet(text):
     api = get_api()
     api.update_status(text)
+
+
+class TweetAPI(object):
+    def __init__(self):
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_token, access_token_secret)
+        self.api = tweepy.API(auth)
+
+    def retweet_by_keyword(self, keyword, read_max=10):
+        api = self.api
+        cnt_retweet = 0
+        try:
+            for tweet in tweepy.Cursor(api.search, q=keyword).items(read_max):
+                cnt_retweet = cnt_retweet + 1
+                tweet.retweet()
+        except tweepy.error.TweepError:
+            pass
+        return cnt_retweet
+
+    def post_tweet(self, text):
+        api = self.api
+        api.update_status(text)
