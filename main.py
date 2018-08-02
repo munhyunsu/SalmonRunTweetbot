@@ -10,7 +10,6 @@ from scheduler import Scheduler
 from posting_maker import tweet_maker
 from coordinator import Coordinator
 
-# TODO(LuHa): Why it does not post salmonrun schedule? why fail?
 
 def fault_torrent_main():
     for index in range(0, 30):
@@ -27,7 +26,7 @@ def fault_torrent_main():
     return 0
 
 
-def main(argv = sys.argv):
+def main():
     # create crawler
     scheduler = Scheduler()
     schedule_list = scheduler.get_schedule_list()
@@ -35,11 +34,6 @@ def main(argv = sys.argv):
     coordinator = Coordinator()
     coordinator.feed_schedule_list(schedule_list)
 
-    # get_variables
-    # check_post = should_post3(schedule_list)
-
-    # for debug
-    # (start, plan, end) = (True, True, True)
     print(datetime.datetime.now(), schedule_list)
 
     # switch
@@ -62,11 +56,7 @@ def main(argv = sys.argv):
 
     print('Updated {0}'.format(text))
 
-    # always execute
-    execute_retweet()
-
 
 if __name__ == '__main__':
     # sys.exit(main())
     sys.exit(fault_torrent_main())
-
