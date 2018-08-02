@@ -36,8 +36,8 @@ class TweetAPI(object):
         cnt_retweet = 0
         try:
             for tweet in tweepy.Cursor(api.search, q=keyword).items(read_max):
-                cnt_retweet = cnt_retweet + 1
                 tweet.retweet()
+                cnt_retweet = cnt_retweet + 1
         except tweepy.error.TweepError:
             pass
         return cnt_retweet
