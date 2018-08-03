@@ -4,7 +4,7 @@ import datetime
 
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
-from twitter import execute_retweet, post_tweet
+from twitter import execute_retweet, post_tweet, TweetAPI
 from utils import should_post, should_post2, should_post3
 from scheduler import Scheduler
 from posting_maker import tweet_maker
@@ -12,18 +12,13 @@ from coordinator import Coordinator
 
 
 def fault_torrent_main():
-    for index in range(0, 30):
-        try:
-            main()
-            break
-        except Exception as e:
-            if index == (30-1):
-                return -1
-            print('{0} Something is wrong(loop: {1}): {2}'.format(datetime.datetime.now(),
-                                                             index+1, e))
-            time.sleep(60)
-            continue
-    return 0
+    try:
+        raise Exception('Example')
+        main()
+    except Exception as e:
+        error_report_main('{0}: {1}'.format(type(e).__name__, e))
+        print('{0} Something is wrong: {1}'.format(datetime.datetime.now(), e))
+    return
 
 
 def main():
@@ -55,6 +50,11 @@ def main():
         post_tweet(text)
 
     print('Updated {0}'.format(text))
+
+
+def error_report_main(message):
+    tweet = TweetAPI()
+    tweet.direct_message(message)
 
 
 if __name__ == '__main__':

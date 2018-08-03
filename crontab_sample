@@ -1,2 +1,4 @@
-0 * * * * cd /home/ubuntu/SalmonRunTweetBot; ./venv/bin/python3 main.py >> history_bot.log
-*/10 * * * * cd /home/ubuntu/SalmonRunTweetBot; ./venv/bin/python3 main_retweet.py >> history_retweet.log
+30 * * * * cd /home/ubuntu/SalmonRunTweetbot; git pull
+0 * * * * cd /home/ubuntu/SalmonRunTweetbot; ./venv/bin/python3 main.py >> history.log
+*/10 * * * * cd /home/ubuntu/SalmonRunTweetbot; ./venv/bin/python3 main_retweet.py >> history_retweet.log
+59 23 * * 6 cd /home/ubuntu/SalmonRunTweetBot; rm history.log history_retweet.log

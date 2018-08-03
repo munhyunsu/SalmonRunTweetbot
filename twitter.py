@@ -1,6 +1,7 @@
 import tweepy
 
 from tweet_key import consumer_key, consumer_secret, access_token, access_token_secret
+from developer_key import developer_id
 
 def get_api():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -45,3 +46,7 @@ class TweetAPI(object):
     def post_tweet(self, text):
         api = self.api
         api.update_status(text)
+
+    def direct_message(self, message, receiver=developer_id):
+        api = self.api
+        api.send_direct_message(user=receiver, text=message)
