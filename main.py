@@ -13,7 +13,6 @@ from coordinator import Coordinator
 
 def fault_torrent_main():
     try:
-        raise Exception('Example')
         main()
     except Exception as e:
         error_report_main('{0}: {1}'.format(type(e).__name__, e))
