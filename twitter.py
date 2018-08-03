@@ -46,6 +46,7 @@ class TweetAPI(object):
     def post_tweet(self, text):
         api = self.api
         api.update_status(text)
+        self.direct_message(text)
 
     def direct_message(self, message, receiver=developer_id):
         api = self.api

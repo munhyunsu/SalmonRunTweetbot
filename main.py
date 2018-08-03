@@ -27,6 +27,8 @@ def main():
     # create coordinator
     coordinator = Coordinator()
     coordinator.feed_schedule_list(schedule_list)
+    # create tweet_api
+    tweet = TweetAPI()
 
     print(datetime.datetime.now(), schedule_list)
 
@@ -36,17 +38,20 @@ def main():
     if start_schedule is not None:
         schedule = start_schedule
         text = tweet_maker.get_text(schedule, types='START')
-        post_tweet(text)
+        tweet.post_tweet(text)
+        # post_tweet(text)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:
         schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
-        post_tweet(text)
+        tweet.post_tweet(text)
+        # post_tweet(text)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
-        post_tweet(text)
+        tweet.post_tweet(text)
+        # post_tweet(text)
 
     print('Updated {0}'.format(text))
 
