@@ -39,19 +39,16 @@ def main():
         schedule = start_schedule
         text = tweet_maker.get_text(schedule, types='START')
         tweet.post_tweet(text)
-        # post_tweet(text)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:
         schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
         tweet.post_tweet(text)
-        # post_tweet(text)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
         tweet.post_tweet(text)
-        # post_tweet(text)
 
     print('Updated {0}'.format(text))
 
