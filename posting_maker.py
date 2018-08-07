@@ -24,6 +24,9 @@ END = '''[연어런 끝/다음 연어런]
 {weapon3_en}/{weapon3_jp}
 {weapon4_en}/{weapon4_jp}'''
 
+BE1H = '''[종료 1시간 전]
+{tweet_url}'''
+
 
 class TweetMaker(object):
     def get_text(self, schedule, types):

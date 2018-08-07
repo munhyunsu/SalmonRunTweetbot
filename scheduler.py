@@ -77,3 +77,25 @@ class Scheduler(object):
 
     def get_schedule_list(self):
         return self.data
+
+    def update_tweet_url(self, schedule, tweet_url):
+        # restore pickle from file
+        try:
+            with open(PICKLENAME, 'rb') as f:
+                schedule_list = pickle.load(f)
+        except FileNotFoundError:
+            schedule_list = list()
+
+        # remove original schedule
+        schedule_list.remove(schedule)
+
+        # append as new one
+        schedule['tweet_url'] = tweet_url
+        schedule_list.append(schedule)
+
+        # sort by start_time!
+        schedule_list.sort(key = itemgetter('start_time'))
+
+        # archive schedule data
+        with open(PICKLENAME, 'wb') as f:
+            pickle.dump(schedule_list, f)

@@ -1,6 +1,6 @@
 import tweepy
 
-from tweet_key import consumer_key, consumer_secret, access_token, access_token_secret
+from tweet_key import account_id, consumer_key, consumer_secret, access_token, access_token_secret
 from developer_key import developer_id
 
 def get_api():
@@ -45,8 +45,11 @@ class TweetAPI(object):
 
     def post_tweet(self, text):
         api = self.api
-        api.update_status(text)
-        self.direct_message(text)
+        status = api.update_status(text)
+        tweet_url = 'https://twitter.com/{0}/status/{1}'
+        tweet_url = tweet_url.format(account_id, status.id_str)
+        self.direct_message(text + tweet_url)
+        return tweet_url
 
     def direct_message(self, message, receiver=developer_id):
         api = self.api
