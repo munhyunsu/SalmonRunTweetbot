@@ -81,3 +81,21 @@ class CoordinatorTests(unittest.TestCase):
             self.assertIsNone(result)
             result = self.coord.get_plan_schedule(now=pivot_time - datetime.timedelta(minutes=30))
             self.assertIsNone(result)
+
+    def test_get_1h_before_end_schedule(self):
+        for entry in GROUND_TRUTH:
+            pivot_time = entry['end_time'] - datetime.timedelta(hours=1)
+            result = self.coord.get_1h_before_end_schedule(now=pivot_time + datetime.timedelta(minutes=29))
+            self.assertEqual(entry, result)
+            result = self.coord.get_1h_before_end_schedule(now=pivot_time + datetime.timedelta(minutes=0))
+            self.assertEqual(entry, result)
+            result = self.coord.get_1h_before_end_schedule(now=pivot_time - datetime.timedelta(minutes=29))
+            self.assertEqual(entry, result)
+            result = self.coord.get_1h_before_end_schedule(now=pivot_time + datetime.timedelta(minutes=30))
+            self.assertIsNone(result)
+            result = self.coord.get_1h_before_end_schedule(now=pivot_time - datetime.timedelta(minutes=30))
+            self.assertIsNone(result)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
