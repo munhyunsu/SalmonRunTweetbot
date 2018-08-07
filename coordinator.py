@@ -15,6 +15,13 @@ class Coordinator(object):
                 return schedule
         return None
 
+    def get_1h_before_end_schedule(self, now=datetime.datetime.now()):
+        for schedule in self.schedule_list:
+            end_sec = (schedule['end_time'] - now).total_seconds()
+            if (end_sec < 5400) and (end_sec > 1800):
+                return schedule
+        return None
+
     def get_end_schedule(self, now=datetime.datetime.now()):
         schedule_list = self.schedule_list
         for index in range(0, len(schedule_list)):
