@@ -7,7 +7,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Repeat crawl and post until success when the internet connection is unstable
 
 ## TODO
-- Post stage information
+- Post stage information (with image)
+- Post weapon information (with images)
 - OAuth Nintendo
 
 # Created by
