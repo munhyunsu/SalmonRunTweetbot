@@ -8,8 +8,10 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - Post stage information (with image)
+  - PIL
 - Post weapon information (with images)
-- OAuth Nintendo
+  - PIL
+- OAuth Nintendo(pending)
 
 # Created by
 - lapiren
