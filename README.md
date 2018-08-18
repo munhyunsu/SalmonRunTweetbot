@@ -11,6 +11,7 @@ Salmon run reminder: Tweets salmon run schedule
   - PIL
 - Post weapon information (with images)
   - PIL
+- Prepare images for upload at Inkipedia
 - OAuth Nintendo(pending)
 
 # Created by
