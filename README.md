@@ -12,6 +12,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Post weapon information (with images)
   - PIL
 - Prepare images for upload at Inkipedia
+  - JSON formed image paths
+  - load image path using json library
 - OAuth Nintendo(pending)
 
 # Created by
