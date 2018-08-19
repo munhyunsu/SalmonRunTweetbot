@@ -64,9 +64,7 @@ class SplatoonWikiParser(object):
         soup = BS(self.html, 'html.parser')
         # parse weapons
         weapons = list()
-        weapon = soup.find_all('table',
-                               style='width: 100%; border-spacing: 0px; overflow: hidden; table-layout: fixed;')[2]
-        weapon = weapon.find_all('table', style='width: 100%; border-spacing: 0px;')[1]
+        weapon = soup.find_all('table', style='width: 100%; border-spacing: 0px;')[1]
         weapon = weapon.text.split('\n')
         for text in weapon:
             if len(text) > 0:

@@ -4,18 +4,19 @@ import datetime
 import wiki_parser
 
 TEST_HTML = 'sample.html'
-GROUND_TRUTH = {'start_time': datetime.datetime(2018, 7, 25, 15),
-                'end_time': datetime.datetime(2018, 7, 26, 21),
-                'weapon1_en': 'Sloshing Machine',
-                'weapon1_jp': 'スクリュースロッシャー',
-                'weapon2_en': '.52 Gal',
-                'weapon2_jp': '.52ガロン',
-                'weapon3_en': 'Clash Blaster',
-                'weapon3_jp': 'クラッシュブラスター',
-                'weapon4_en': 'Goo Tuber',
-                'weapon4_jp': 'ソイチューバー',
+GROUND_TRUTH = {'start_time': datetime.datetime(2018, 8, 21, 21),
+                'end_time': datetime.datetime(2018, 8, 23, 3),
+                'weapon1_en': 'Splattershot',
+                'weapon1_jp': 'スプラシューター',
+                'weapon2_en': 'Slosher',
+                'weapon2_jp': 'バケットスロッシャー',
+                'weapon3_en': 'Octobrush',
+                'weapon3_jp': 'ホクサイ',
+                'weapon4_en': 'E-liter 4K Scope',
+                'weapon4_jp': '4Kスコープ',
                 'stage_en': 'Salmonid Smokeyard',
                 'stage_jp': 'トキシラズいぶし工房'}
+
 
 
 class SplatoonWikiParserTests(unittest.TestCase):
