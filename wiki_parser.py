@@ -80,6 +80,3 @@ class SplatoonWikiParser(object):
         stage = stage[1].text
 
         return stage
-
-
-# parser = SplatoonWikiParser()
