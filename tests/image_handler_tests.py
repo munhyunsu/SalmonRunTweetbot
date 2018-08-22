@@ -1,6 +1,6 @@
 import unittest
 
-from PIL import image
+from PIL import Image
 
 
 class ImageHandlerTests(unittest.TestCase):
