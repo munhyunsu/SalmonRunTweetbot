@@ -64,3 +64,21 @@ def should_post3(schedule_list, now = datetime.datetime.now()):
 #             print('{0}: Can not reach internet(loop: {1})'.format(datetime.datetime.now(), index+1))
 #             time.sleep(sleep_sec)
 #             continue
+
+def get_files(path, ext='', recursive=False):
+    import os
+    path_list = [path]
+    result = list()
+
+    while len(path_list) > 0:
+        cpath = path_list.pop()
+        with os.scandir(cpath) as it:
+            for entry in it:
+                if not entry.name.startswith('.') and entry.is_file():
+                    if entry.name.endswith(ext):
+                        yield entry.path
+                else:
+                    if recursive == True:
+                        path_list.append(entry.path)
+
+    return path_list
