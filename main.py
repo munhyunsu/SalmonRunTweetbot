@@ -41,24 +41,23 @@ def main():
     if start_schedule is not None:
         schedule = start_schedule
         text = tweet_maker.get_text(schedule, types='START')
-        stage = schedule['stage_en']
-        weapons = [schedule['weapon1_en'],
-                   schedule['weapon2_en'],
-                   schedule['weapon3_en'],
-                   schedule['weapon4_en']]
-        image_name = image_handler.get_merged_image(stage, weapons)
+        image_name = image_handler.get_merged_image(schedule)
         tweet_url = tweet.post_tweet_with_image(text, image_name)
         scheduler.update_tweet_url(schedule, tweet_url)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:
         schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
-        tweet.post_tweet(text)
+        image_name = image_handler.get_merged_image(schedule)
+        tweet.post_tweet_with_image(text, image_name)
+        # tweet.post_tweet(text)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
-        tweet.post_tweet(text)
+        image_name = image_handler.get_merged_image(schedule)
+        tweet.post_tweet_with_image(text, image_name)
+        # tweet.post_tweet(text)
     be1h_schedule = coordinator.get_1h_before_end_schedule()
     if be1h_schedule is not None:
         schedule = be1h_schedule

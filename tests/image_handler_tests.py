@@ -1,8 +1,22 @@
 import unittest
+import datetime
 
 from PIL import Image
 
 from image_handler import ImageHandler
+
+GROUND_TRUTH = {'start_time': datetime.datetime(2018, 8, 21, 21),
+                'end_time': datetime.datetime(2018, 8, 23, 3),
+                'weapon1_en': 'Splattershot',
+                'weapon1_jp': 'スプラシューター',
+                'weapon2_en': 'Slosher',
+                'weapon2_jp': 'バケットスロッシャー',
+                'weapon3_en': 'Octobrush',
+                'weapon3_jp': 'ホクサイ',
+                'weapon4_en': 'E-liter 4K Scope',
+                'weapon4_jp': '4Kスコープ',
+                'stage_en': 'Salmonid Smokeyard',
+                'stage_jp': 'トキシラズいぶし工房'}
 
 
 class ImageHandlerTests(unittest.TestCase):
@@ -25,10 +39,9 @@ class ImageHandlerTests(unittest.TestCase):
         self.assertDictEqual(wanted_result, image_list)
 
     def test_get_merged_image(self):
-        wanted_result = Image.open('image_sample.png')
-        stage = 'Salmonid Smokeyard'
-        weapons = ['E-liter 4K Scope', 'Octobrush', 'Slosher', 'Splattershot']
-        merged_image = self.image_handler.get_merged_image(stage, weapons)
+        wanted_result = Image.open('sample_image.png')
+        schedule = GROUND_TRUTH
+        merged_image = self.image_handler.get_merged_image(schedule)
         merged_image = Image.open(merged_image)
         self.assertEqual(wanted_result.histogram(), merged_image.histogram())
 
