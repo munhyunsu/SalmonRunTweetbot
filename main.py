@@ -9,6 +9,7 @@ from utils import should_post, should_post2, should_post3
 from scheduler import Scheduler
 from posting_maker import tweet_maker
 from coordinator import Coordinator
+from image_handler import ImageHandler
 
 
 def fault_torrent_main():
@@ -29,6 +30,8 @@ def main():
     coordinator.feed_schedule_list(schedule_list)
     # create tweet_api
     tweet = TweetAPI()
+    # create image handler
+    image_handler = ImageHandler('./images/')
 
     print(datetime.datetime.now(), schedule_list)
 
@@ -38,7 +41,13 @@ def main():
     if start_schedule is not None:
         schedule = start_schedule
         text = tweet_maker.get_text(schedule, types='START')
-        tweet_url = tweet.post_tweet(text)
+        stage = schedule['stage_en']
+        weapons = [schedule['weapon1_en'],
+                   schedule['weapon2_en'],
+                   schedule['weapon3_en'],
+                   schedule['weapon4_en']]
+        image_name = image_handler.get_merged_image(stage, weapons)
+        tweet_url = tweet.post_tweet_with_image(text, image_name)
         scheduler.update_tweet_url(schedule, tweet_url)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:

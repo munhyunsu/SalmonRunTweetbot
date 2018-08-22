@@ -48,7 +48,15 @@ class TweetAPI(object):
         status = api.update_status(text)
         tweet_url = 'https://twitter.com/{0}/status/{1}'
         tweet_url = tweet_url.format(account_id, status.id_str)
-        self.direct_message(text + tweet_url)
+        self.direct_message(tweet_url)
+        return tweet_url
+
+    def post_tweet_with_image(self, text, image):
+        api = self.api
+        status = api.update_with_media(image, text)
+        tweet_url = 'https://twitter.com/{0}/status/{1}'
+        tweet_url = tweet_url.format(account_id, status.id_str)
+        self.direct_message(tweet_url)
         return tweet_url
 
     def direct_message(self, message, receiver=developer_id):

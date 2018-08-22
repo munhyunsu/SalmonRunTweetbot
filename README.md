@@ -6,6 +6,11 @@ Salmon run reminder: Tweets salmon run schedule
 - Get schedules from Splatoon wiki
 - Repeat crawl and post until success when the internet connection is unstable
 
+## Install(Usage)
+- set Google Spreadsheet API to \*.json
+- set Twitter API to tweet\_key.py
+- download stage and weapon images to images/
+
 ## TODO
 - Post stage information (with image)
   - PIL
