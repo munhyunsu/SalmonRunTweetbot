@@ -50,14 +50,12 @@ def main():
         text = tweet_maker.get_text(schedule, types='END')
         image_name = image_handler.get_merged_image(schedule)
         tweet.post_tweet_with_image(text, image_name)
-        # tweet.post_tweet(text)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
         image_name = image_handler.get_merged_image(schedule)
         tweet.post_tweet_with_image(text, image_name)
-        # tweet.post_tweet(text)
     be1h_schedule = coordinator.get_1h_before_end_schedule()
     if be1h_schedule is not None:
         schedule = be1h_schedule
