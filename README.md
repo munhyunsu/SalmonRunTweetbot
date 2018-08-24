@@ -5,6 +5,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Search tweets by hashtag and retweet them
 - Get schedules from Splatoon wiki
 - Repeat crawl and post until success when the internet connection is unstable
+- Post Salmon run schedule and it's image
+
 
 ## Install(Usage)
 - set Google Spreadsheet API to \*.json
@@ -12,13 +14,6 @@ Salmon run reminder: Tweets salmon run schedule
 - download stage and weapon images to images/
 
 ## TODO
-- Post stage information (with image)
-  - PIL
-- Post weapon information (with images)
-  - PIL
-- Prepare images for upload at Inkipedia
-  - JSON formed image paths
-  - load image path using json library
 - OAuth Nintendo(pending)
 
 # Created by
