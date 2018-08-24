@@ -12,7 +12,8 @@ Salmon run reminder: Tweets salmon run schedule
 - set Google Spreadsheet API to \*.json
 - set Twitter API to tweet\_key.py
 - download stage and weapon images to images/
-
+  - only use higher 256px images, if not you get error
+  
 ## TODO
 - OAuth Nintendo(pending)
 
