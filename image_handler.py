@@ -1,6 +1,6 @@
 import os
 
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 
 from utils import get_files
 
@@ -21,9 +21,18 @@ class ImageHandler(object):
 
         return images
 
+    START = '''[연어런 시작]
+    시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
+    스테이지: {stage_en}/{stage_jp}
+    무기: {weapon1_en}/{weapon1_jp}
+    {weapon2_en}/{weapon2_jp}
+    {weapon3_en}/{weapon3_jp}
+    {weapon4_en}/{weapon4_jp}'''
     def get_merged_image(self, schedule):
         # prepare materials
         images = self.get_original_images()
+        image_title = '{stage_en}/{stage_jp}'.format_map(schedule)
+        image_date = '{start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}'.format_map(schedule)
         stage_name = schedule['stage_en']
         weapon_names = [schedule['weapon1_en'],
                         schedule['weapon2_en'],
@@ -42,6 +51,13 @@ class ImageHandler(object):
         for index in range(0, len(weapons)):
             resized_weapon = weapons[index].resize((480, 480))
             merged_image.paste(resized_weapon, (480*index, 1080-480), resized_weapon)
+
+        font_title = ImageFont.truetype('fonts/Splat2K.ttf', 80)
+        font_date = ImageFont.truetype('fonts/Splat2K.ttf', 60)
+
+        draw = ImageDraw.Draw(merged_image, "RGBA")
+        draw.text((50, 15), image_title, (0, 0, 0), font=font_title)
+        draw.text((50, 95), image_date, (220, 118, 40), font=font_date)
 
         save_path = 'merged_image.png'
         with open(save_path, 'wb') as f:
