@@ -3,6 +3,7 @@ Gspread-39d43309c65c.json
 tweet_key.py
 developer_key.py
 images
+fonts
 *.log
 *.html
 *.pickle
