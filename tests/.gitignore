@@ -1,3 +1,6 @@
 images/
 mask/
 *.png
+
+# temporary
+image_practice.py
