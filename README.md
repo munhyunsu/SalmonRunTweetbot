@@ -18,6 +18,6 @@ Salmon run reminder: Tweets salmon run schedule
 ## TODO
 - OAuth Nintendo(pending)
 
-# Created by
+# Created by(Main contributor)
 - lapiren
 - LunaticHarmony(munhyunsu@gmail.com)
