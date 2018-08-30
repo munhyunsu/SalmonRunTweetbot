@@ -74,7 +74,8 @@ def get_files(path, ext='', recursive=False):
         cpath = path_list.pop()
         with os.scandir(cpath) as it:
             for entry in it:
-                if not entry.name.startswith('.') and entry.is_file():
+                # if not entry.name.startswith('.') and entry.is_file():
+                if entry.is_file():
                     if entry.name.endswith(ext):
                         yield entry.path
                 else:
