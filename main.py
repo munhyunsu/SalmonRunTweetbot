@@ -1,6 +1,7 @@
 import sys
 import time
 import datetime
+import traceback
 
 from web_crawler import WebCrawler
 from get_spread import get_translate_dict
@@ -15,9 +16,10 @@ from image_handler import ImageHandler
 def fault_torrent_main():
     try:
         main()
-    except Exception as e:
-        error_report_main('{0}: {1}'.format(type(e).__name__, e))
-        print('{0} Something is wrong: {1}'.format(datetime.datetime.now(), e))
+    except Exception:
+        error_report_main(traceback.format_exc())
+        print('{0} Something is wrong: {1}'.format(datetime.datetime.now(),
+                                                   traceback.format_exc()))
     return
 
 
