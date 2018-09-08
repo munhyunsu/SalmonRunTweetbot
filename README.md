@@ -18,6 +18,7 @@ Salmon run reminder: Tweets salmon run schedule
 ## TODO
 - OAuth Nintendo(pending)
 - Code rearrange(delete legacy code)
+- Tools for designer
 
 # Created by(Main contributor)
 - lapiren
