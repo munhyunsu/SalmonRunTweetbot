@@ -19,6 +19,7 @@ Salmon run reminder: Tweets salmon run schedule
 - OAuth Nintendo(pending)
 - Code rearrange(delete legacy code)
 - Tools for designer
+- Change method of import private keys
 
 # Created by(Main contributor)
 - lapiren
