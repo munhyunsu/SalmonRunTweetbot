@@ -21,6 +21,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Tools for designer
 - Change method of import private keys
 - [Bug] Can not write tweet url at Salmon run beginning
+  - Need caution
 
 # Created by(Main contributor)
 - lapiren
