@@ -22,6 +22,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Change method of import private keys
 - [Bug] Can not write tweet url at Salmon run beginning
   - Need why?
+- Discord bot?
 
 # Created by(Main contributor)
 - lapiren
