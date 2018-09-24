@@ -24,6 +24,8 @@ Salmon run reminder: Tweets salmon run schedule
   - Need why?
 - Discord bot
   - using node.js
+  - method for using OAuth token
+  - connect discord server
 
 # Created by(Main contributor)
 - lapiren
