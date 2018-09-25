@@ -1,15 +1,21 @@
 from discord_key import client_id, client_secret, client_token
+from file_handler import FileHandler
+
 
 import discord
 from discord.ext import commands
 import asyncio
 
 
-
+DESC = '''SalmonRun Reminder KR
+'''
 
 
 def main():
-    bot = commands.Bot(command_prefix='$', description='SalmonrunReminderKR')
+    bot = commands.Bot(command_prefix='$',
+                       case_insensitive=True,
+                       description=DESC)
+    file_handler = FileHandler()
 
     @bot.event
     async def on_ready():
@@ -18,22 +24,9 @@ def main():
         print(bot.user.id)
         print('------')
 
-    @bot.command()
-    async def here():
-        await bot.say('here')
-
-    @bot.group(pass_context=True)
-    async def cool(ctx):
-        """Says if a user is cool.
-        In reality this just checks if a subcommand is being invoked.
-        """
-        if ctx.invoked_subcommand is None:
-            await bot.say('No, {0.subcommand_passed} is not cool'.format(ctx))
-
-    @cool.command(name='bot')
-    async def _bot():
-        """Is the bot cool?"""
-        await bot.say('Yes, the bot is cool.')
+    @bot.command(name='salmonrun', aliases=['연어런', '연어'])
+    async def salmonrun():
+        await bot.say(file_handler.read())
 
     bot.run(client_token)
 

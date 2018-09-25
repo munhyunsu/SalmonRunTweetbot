@@ -11,6 +11,7 @@ from scheduler import Scheduler
 from posting_maker import tweet_maker
 from coordinator import Coordinator
 from image_handler import ImageHandler
+from file_handler import FileHandler
 
 
 
@@ -36,6 +37,8 @@ def main():
     tweet = TweetAPI()
     # create image handler
     image_handler = ImageHandler('./images/')
+    # create latest url writer
+    latest_writer = FileHandler()
 
     print(datetime.datetime.now(), schedule_list)
 
@@ -47,19 +50,22 @@ def main():
         text = tweet_maker.get_text(schedule, types='START')
         image_name = image_handler.get_merged_image(schedule)
         tweet_url = tweet.post_tweet_with_image(text, image_name)
+        latest_writer.write(tweet_url)
         scheduler.update_tweet_url(schedule, tweet_url)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:
         schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
         image_name = image_handler.get_merged_image(schedule)
-        tweet.post_tweet_with_image(text, image_name)
+        tweet_url = tweet.post_tweet_with_image(text, image_name)
+        latest_writer.write(tweet_url)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
         image_name = image_handler.get_merged_image(schedule)
-        tweet.post_tweet_with_image(text, image_name)
+        tweet_url = tweet.post_tweet_with_image(text, image_name)
+        latest_writer.write(tweet_url)
     be1h_schedule = coordinator.get_1h_before_end_schedule()
     if be1h_schedule is not None:
         schedule = be1h_schedule

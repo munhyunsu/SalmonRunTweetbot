@@ -62,3 +62,12 @@ class TweetAPI(object):
     def direct_message(self, message, receiver=developer_id):
         api = self.api
         api.send_direct_message(user=receiver, text=message)
+
+
+def main():
+    tweet = TweetAPI()
+    tweet.direct_message('here')
+
+
+if __name__ == '__main__':
+    main()
