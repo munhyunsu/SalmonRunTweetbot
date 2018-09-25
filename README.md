@@ -26,6 +26,7 @@ Salmon run reminder: Tweets salmon run schedule
   - using node.js
   - method for using OAuth token
   - connect discord server
+  - post twitter url
 
 # Created by(Main contributor)
 - lapiren
