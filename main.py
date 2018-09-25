@@ -13,6 +13,8 @@ from coordinator import Coordinator
 from image_handler import ImageHandler
 
 
+
+
 def fault_torrent_main():
     try:
         main()

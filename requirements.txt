@@ -3,3 +3,5 @@ gspread
 oauth2client
 BeautifulSoup4
 Pillow
+discord
+discord.py
