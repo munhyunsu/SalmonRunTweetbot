@@ -30,3 +30,21 @@ def get_translate_dict():
     return (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko)
 
 # print(get_translate_dict())
+
+
+def get_meme_dict():
+    # Authentication
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('Gspread-39d43309c65c.json', scope)
+    # Authorization
+    gc = gspread.authorize(credentials)
+
+    # get worksheet by name
+    wks = gc.open('Splatoon 2').worksheet('Meme')
+    # create weapon dictionaries
+    meme = dict()
+    for row in wks.get_all_values()[1:]:
+        meme[row[0]] = row[1]
+
+    return meme
