@@ -39,10 +39,10 @@ def main():
     async def meme(ctx, *args):
         """짤을 호출합니다(URL).
         """
+        global MEME, MEME_TIME
         now = datetime.datetime.now()
         until_update = (now-MEME_TIME).total_seconds()
         if until_update >= 3600:
-            global MEME, MEME_TIME
             MEME = get_meme_dict()
             MEME_TIME = now
         if len(args) < 1:
