@@ -2,12 +2,14 @@
 Gspread-39d43309c65c.json
 tweet_key.py
 developer_key.py
+discord_key.py
 images
 fonts
 *.log
 *.html
 *.pickle
 *.png
+latest_url
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
