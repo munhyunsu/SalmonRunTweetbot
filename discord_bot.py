@@ -26,7 +26,7 @@ def main():
 
     @bot.command(name='salmonrun',
                  aliases=['연어런', '연어'])
-    async def salmonrun(ctx, *, arg):
+    async def salmonrun():
         '''SalmonRunKR의 최신 트윗을 가져옵니다.
         '''
         await bot.say(file_handler.read())
