@@ -21,10 +21,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Tools for designer
 - Change method of import private keys
 - [Bug] Can not write tweet url at Salmon run beginning
-  - Need why?
+  - (Pending) it caused by tweetpy library bug
 - Discord bot
-  - using node.js
-  - method for using OAuth token
   - connect discord server
   - post twitter url
 
