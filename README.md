@@ -1,11 +1,15 @@
 # SalmonRunTweetbot
 Salmon run reminder: Tweets salmon run schedule
 
-## Featrues
+## Featrues: Salmon Run Tweetbot
 - Search tweets by hashtag and retweet them
 - Get schedules from Splatoon wiki
 - (Disable) Repeat crawl and post until success when the internet connection is unstable
 - Post Salmon run schedule and it's image
+
+## Features: Discord Chatroom bot
+- Post url of latest salmon run tweet
+- Post meme url
 
 ## Install(Usage)
 - set Google Spreadsheet API to \*.json
@@ -25,6 +29,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Discord bot
   - connect discord server
   - post twitter url
+
 
 # Created by(Main contributor)
 - lapiren
