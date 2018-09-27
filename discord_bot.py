@@ -54,7 +54,8 @@ def main():
             called_meme = args[0]
             called_meme_url = MEME.get(called_meme, None)
             if called_meme_url is None:
-                if random.randint(1, 100) == 100:
+                rand = random.randint(1, 10)
+                if rand == 10:
                     await ctx.send('아, 쫌! 없다구요.')
                 else:
                     await ctx.send('검색된 짤이 없습니다.')
