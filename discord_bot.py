@@ -42,12 +42,12 @@ def main():
     async def meme(ctx, *args):
         """짤을 호출합니다(URL).
         """
-        # global MEME, MEME_TIME
-        # now = datetime.datetime.now()
-        # until_update = (now-MEME_TIME).total_seconds()
-        # if until_update >= 60*60:
-        #     MEME = get_meme_dict()
-        #     MEME_TIME = now
+        global MEME, MEME_TIME
+        now = datetime.datetime.now()
+        until_update = (now-MEME_TIME).total_seconds()
+        if until_update >= 60*60:
+            MEME = get_meme_dict()
+            MEME_TIME = now
         if len(args) < 1:
             await ctx.send('현재 짤이 {0}개 있습니다.'.format(len(MEME)))
         else:
@@ -67,13 +67,13 @@ def main():
     async def weapon(ctx, *args):
         """무작위 무기를 호출합니다.
         """
-        # global WEAPON_TIME
-        # global WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO
-        # now = datetime.datetime.now()
-        # until_update = (now-WEAPON_TIME).total_seconds()
-        # if until_update >= 60*60*24:
-        #     (WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO) = get_translate_dict()
-        #     WEAPON_TIME = now
+        global WEAPON_TIME
+        global WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO
+        now = datetime.datetime.now()
+        until_update = (now-WEAPON_TIME).total_seconds()
+        if until_update >= 60*60*24:
+            (WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO) = get_translate_dict()
+            WEAPON_TIME = now
         sel_wp_en = random.choice(list(WP_EN_JP.keys()))
         await ctx.send('{0.author.mention} {1}/{2}/{3}'.format(ctx,
                                                                sel_wp_en,
@@ -86,7 +86,7 @@ def main():
         """고민될 때 사용합니다.
         """
         if len(args) < 2:
-            await ctx.sen('{0.author.mention} 최소 2개를 입력하세요.'.format(ctx))
+            await ctx.send('{0.author.mention} 최소 2개를 입력하세요.'.format(ctx))
         else:
             await ctx.send('{0.author.mention} {1}개 중에서 선택: {2}'.format(ctx, len(args), random.choice(args)))
 
