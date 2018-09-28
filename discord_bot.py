@@ -80,6 +80,16 @@ def main():
                                                                WP_EN_JP[sel_wp_en],
                                                                WP_EN_KO[sel_wp_en]))
 
+    @bot.command(name='select',
+                 aliases=['선택'])
+    async def select(ctx, *args):
+        """고민될 때 사용합니다.
+        """
+        if len(args) < 2:
+            await ctx.sen('{0.author.mention} 최소 2개를 입력하세요.'.format(ctx))
+        else:
+            await ctx.send('{0.author.mention} {1}개 중에서 선택: {2}'.format(ctx, len(args), random.choice(args)))
+
     bot.run(client_token)
 
 
