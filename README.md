@@ -10,6 +10,7 @@ Salmon run reminder: Tweets salmon run schedule
 ## Features: Discord Chatroom bot
 - Post url of latest salmon run tweet
 - Post meme url
+- Select various options
 
 ## Install(Usage)
 - set Google Spreadsheet API to \*.json
