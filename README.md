@@ -11,6 +11,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Post url of latest salmon run tweet
 - Post meme url
 - Select various options
+- Random weapons
 
 ## Install(Usage)
 - set Google Spreadsheet API to \*.json
