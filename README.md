@@ -7,7 +7,7 @@ Salmon run reminder: Tweets salmon run schedule
 - (Disable) Repeat crawl and post until success when the internet connection is unstable
 - Post Salmon run schedule and it's image
 
-## TODO: 
+## TODO
 - OAuth Nintendo(pending)
 - Code rearrange(delete legacy code)
 - Tools for designer
@@ -22,9 +22,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Select various options
 - Random weapons
 
-## TODO: 
-- connect discord server
-- post twitter url
+## TODO
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
