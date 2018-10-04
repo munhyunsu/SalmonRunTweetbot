@@ -68,7 +68,7 @@ class SplatoonWikiParser(object):
         weapon = weapon.text.split('\n')
         for text in weapon:
             if len(text) > 0:
-                weapons.append(text)
+                weapons.append(text.strip())
 
         return weapons
 
@@ -77,6 +77,6 @@ class SplatoonWikiParser(object):
         # parse stage
         stage = soup.find_all('td',
                                style='background-color: rgba(255, 255, 255, 0.4); border: 2px solid #ffffff; border-width: 0px 0px 2px 2px; border-radius: 0px 0px 0px 8px; text-align: center;')
-        stage = stage[1].text
+        stage = stage[1].text.strip()
 
         return stage
