@@ -76,8 +76,10 @@ def main():
 
 
 def error_report_main(message):
-    tweet = TweetAPI()
-    tweet.direct_message(message)
+    # temporary disable
+    # tweet = TweetAPI()
+    # tweet.direct_message(message)
+    print(message)
 
 
 if __name__ == '__main__':
