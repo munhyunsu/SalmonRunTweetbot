@@ -21,6 +21,13 @@ def fault_torrent_main():
 
 
 def main():
+    """Main sequence
+    - Care about Scheduler, Coordinator, WikiParser
+    - Repeat posting tweet about plan, start, end
+      - using list?
+    """
+    # main sequence
+    # 1.
     # create crawler
     scheduler = Scheduler()
     schedule_list = scheduler.get_schedule_list()
