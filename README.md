@@ -12,8 +12,6 @@ Salmon run reminder: Tweets salmon run schedule
 - Code rearrange(delete legacy code)
 - Tools for designer
 - Change method of import private keys
-- [Bug] Can not write tweet url at Salmon run beginning
-- [Bug] Can not care whitespace
 
 # DiscordChatroomBot
 
