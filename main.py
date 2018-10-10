@@ -1,19 +1,13 @@
 import sys
-import time
 import datetime
 import traceback
 
-from web_crawler import WebCrawler
-from get_spread import get_translate_dict
-from twitter import execute_retweet, post_tweet, TweetAPI
-from utils import should_post, should_post2, should_post3
+from twitter import TweetAPI
 from scheduler import Scheduler
 from posting_maker import tweet_maker
 from coordinator import Coordinator
 from image_handler import ImageHandler
 from file_handler import FileHandler
-
-
 
 
 def fault_torrent_main():
@@ -27,6 +21,14 @@ def fault_torrent_main():
 
 
 def main():
+    """Main sequence
+    - Care about Scheduler, Coordinator, WikiParser
+    - Repeat posting tweet about plan, start, end
+      - using list?
+
+    """
+    # main sequence
+    # 1.
     # create crawler
     scheduler = Scheduler()
     schedule_list = scheduler.get_schedule_list()
