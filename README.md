@@ -1,8 +1,8 @@
-# SalmonRunTweetbot
+# SalmonRun Tweet Bot
 Salmon run reminder: Tweets salmon run schedule
 
-## Featrues
-- Search tweets by hashtag and retweet them
+## Feature
+- Search tweets by hash-tag and re-tweet them
 - Get schedules from Splatoon wiki
 - (Disable) Repeat crawl and post until success when the internet connection is unstable
 - Post Salmon run schedule and it's image
@@ -13,7 +13,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Tools for designer
 - Change method of import private keys
 
-# DiscordChatroomBot
+# Discord Chatting room Bot
 
 ## Features
 - Post url of latest salmon run tweet
@@ -30,8 +30,8 @@ Salmon run reminder: Tweets salmon run schedule
 - set Twitter API to tweet\_key.py
 - download stage and weapon images to images/
   - only use higher 256px images, if not you get error
-- downdload font.ttf to fonts/
-  - need english and japenese font
+- download font.ttf to fonts/
+  - need English and Japanese font
   
 # Created by(Main contributor)
 - lapiren
