@@ -1,0 +1,3 @@
+[submodule "DNLabDiscordBot"]
+	path = DNLabDiscordBot
+	url = https://github.com/munhyunsu/DNLabDiscordBot.git
