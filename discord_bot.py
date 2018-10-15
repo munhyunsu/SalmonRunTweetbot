@@ -97,6 +97,8 @@ def main():
         """가위바위보를 합니다."""
         if len(args) <= 0:
             await ctx.send('가위/바위/보 또는 결과를 선택해야합니다.')
+            return
+
         if args[0] == '결과':
             result_str = '[총 {0:d}명의 선수]\n'.format(len(kbb_entry))
             for key in kbb_entry.keys():
