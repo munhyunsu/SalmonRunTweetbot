@@ -96,16 +96,16 @@ def main():
     async def kbb_game(ctx, *args):
         """가위바위보를 합니다."""
         if len(args) <= 0:
-            return '가위/바위/보 또는 결과를 선택해야합니다.'
+            await ctx.send('가위/바위/보 또는 결과를 선택해야합니다.')
         if args[0] == '결과':
             result_str = '[총 {0:d}명의 선수]\n'.format(len(kbb_entry))
             for key in kbb_entry.keys():
                 result_str = result_str + '{0}: {1}\n'.format(key, kbb_entry[key])
             kbb_entry.clear()
-            return result_str
+            await ctx.send(result_str)
         elif args[0] in ['가위', '바위', '보']:
             kbb_entry[ctx.author.name] = args[0]
-            return '{0.author.mention} {1} 엔트리!'.format(ctx, args[0])
+            await ctx.send('{0.author.mention} {1} 엔트리!'.format(ctx, args[0]))
 
     bot.run(client_token)
 
