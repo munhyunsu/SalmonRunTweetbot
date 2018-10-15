@@ -22,6 +22,7 @@ def main():
                        case_insensitive=True,
                        description=DESC)
     file_handler = FileHandler()
+    kbb_entry = dict()
 
     @bot.event
     async def on_ready():
@@ -89,6 +90,24 @@ def main():
             await ctx.send('{0.author.mention} 최소 2개를 입력하세요.'.format(ctx))
         else:
             await ctx.send('{0.author.mention} {1}개 중에서 선택: {2}'.format(ctx, len(args), random.choice(args)))
+
+    @bot.command(name='kbb',
+                 aliases=['가위바위보', '대결'])
+    async def kbb_game(ctx, *args):
+        """가위바위보를 합니다."""
+        if len(args) <= 0:
+            await ctx.send('가위/바위/보 또는 결과를 선택해야합니다.')
+            return
+
+        if args[0] == '결과':
+            result_str = '[총 {0:d}명의 선수]\n'.format(len(kbb_entry))
+            for key in kbb_entry.keys():
+                result_str = result_str + '{0}: {1}\n'.format(key, kbb_entry[key])
+            kbb_entry.clear()
+            await ctx.send(result_str)
+        elif args[0] in ['가위', '바위', '보']:
+            kbb_entry[ctx.author.name] = args[0]
+            await ctx.send('{0.author.mention} {1} 엔트리!'.format(ctx, args[0]))
 
     bot.run(client_token)
 
