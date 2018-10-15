@@ -93,7 +93,7 @@ def main():
 
     @bot.command(name='kbb',
                  aliases=['가위바위보', '대결'])
-    def kbb_game(ctx, *args):
+    async def kbb_game(ctx, *args):
         """가위바위보를 합니다."""
         if len(args) <= 0:
             return '가위/바위/보 또는 결과를 선택해야합니다.'
