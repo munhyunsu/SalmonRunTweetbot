@@ -1,3 +1,6 @@
 [submodule "DNLabDiscordBot"]
 	path = DNLabDiscordBot
 	url = https://github.com/munhyunsu/DNLabDiscordBot.git
+[submodule "InkipediaCrawler"]
+	path = InkipediaCrawler
+	url = https://github.com/munhyunsu/InkipediaCrawler.git
