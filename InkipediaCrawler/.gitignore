@@ -1,0 +1,3 @@
+*.html
+!tests/inkipedia_parser_tests.html
+*.json

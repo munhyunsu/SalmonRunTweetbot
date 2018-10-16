@@ -28,6 +28,7 @@ class InkipediaParser(object):
         return schedules
 
     def _parse_salmonrun_times(self):
+        tz_seoul = datetime.timezone(datetime.timedelta(hours=9))
         identifiers = ['salmon1', 'salmon2']
         # Get start end time
         times = list()
@@ -37,10 +38,12 @@ class InkipediaParser(object):
             salmon_start = salmon_text.split('-')[0].strip() + ' ' + str(datetime.datetime.now().year)
             salmon_start = datetime.datetime.strptime(salmon_start, '%b %d %H:%M %Y')
             salmon_start = salmon_start + datetime.timedelta(hours=9)  # KTC = +9000
+            salmon_start = salmon_start.replace(tzinfo=tz_seoul)
             salmon_end = salmon_text.split('-')[1].strip()[:-4] + ' ' + str(datetime.datetime.now().year)
             salmon_end = datetime.datetime.strptime(salmon_end, '%b %d %H:%M %Y')
             salmon_end = salmon_end + datetime.timedelta(hours=9)  # KTC = +9000
-            times.append((salmon_start, salmon_end))
+            salmon_end = salmon_end.replace(tzinfo=tz_seoul)
+            times.append((salmon_start.isoformat(), salmon_end.isoformat()))
         return times
 
     def _parse_salmonrun_weapons(self):
