@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as BS
+from bs4 import BeautifulSoup
 import datetime
 
 
@@ -44,7 +44,7 @@ class SplatoonWikiParser(object):
         return schedule
 
     def parse_salmon2_times(self):
-        soup = BS(self.html, 'html.parser')
+        soup = BeautifulSoup(self.html, 'html.parser')
         # Get start end time
         times = list()
         salmon_text = soup.find(id='salmon2').text
@@ -61,7 +61,7 @@ class SplatoonWikiParser(object):
         return times
 
     def parse_salmon2_weapons(self):
-        soup = BS(self.html, 'html.parser')
+        soup = BeautifulSoup(self.html, 'html.parser')
         # parse weapons
         weapons = list()
         weapon = soup.find_all('table', style='width: 100%; border-spacing: 0px;')[1]
@@ -73,10 +73,14 @@ class SplatoonWikiParser(object):
         return weapons
 
     def parse_salmon2_stage(self):
-        soup = BS(self.html, 'html.parser')
+        soup = BeautifulSoup(self.html, 'html.parser')
         # parse stage
         stage = soup.find_all('td',
-                               style='background-color: rgba(255, 255, 255, 0.4); border: 2px solid #ffffff; border-width: 0px 0px 2px 2px; border-radius: 0px 0px 0px 8px; text-align: center;')
+                              style=('background-color: rgba(255, 255, 255, 0.4); '
+                                     'border: 2px solid #ffffff; '
+                                     'border-width: 0px 0px 2px 2px; '
+                                     'border-radius: 0px 0px 0px 8px; '
+                                     'text-align: center;'))
         stage = stage[1].text.strip()
 
         return stage
