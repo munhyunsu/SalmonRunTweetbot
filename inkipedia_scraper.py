@@ -41,7 +41,6 @@ def main():
         # cursor['stage2_jp'] = st_en_jp[cursor['stage2']]
         # cursor['stage2_ko'] = st_en_ko[cursor['stage2']]
 
-    print(inkipedia_json)
     with open(LOCALEFILE, 'w') as f:
         json.dump(inkipedia_json, f, indent=2)
 
