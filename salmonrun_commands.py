@@ -42,21 +42,18 @@ class SalmonrunCommands(object):
                       aliases=['일반', '나와바리'])
     async def regular(self, ctx, *args):
         """일반 배틀 스테이지를 확인합니다."""
-        self.inkipedia = InkipediaProvider()
         await ctx.send(self.inkipedia.get_regular(ctx, args))
 
     @commands.command(name='ranked',
                       aliases=['랭크'])
     async def ranked(self, ctx, *args):
         """랭크 배틀 스테이지를 확인합니다."""
-        self.inkipedia = InkipediaProvider()
         await ctx.send(self.inkipedia.get_ranked(ctx, args))
 
     @commands.command(name='league',
                       aliases=['리그'])
     async def league(self, ctx, *args):
         """리그 배틀 스테이지를 확인합니다."""
-        self.inkipedia = InkipediaProvider()
         await ctx.send(self.inkipedia.get_league(ctx, args))
 
 
