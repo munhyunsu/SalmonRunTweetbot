@@ -24,6 +24,7 @@ Salmon run reminder: Tweets salmon run schedule
 ## TODO
 - refactoring with test code
 - based on DNLab Discord Bot
+- change parsing rule
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
