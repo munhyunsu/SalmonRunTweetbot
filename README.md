@@ -33,7 +33,8 @@ Salmon run reminder: Tweets salmon run schedule
   - only use higher 256px images, if not you get error
 - download font.ttf to fonts/
   - need English and Japanese font
-  
+- submodule update --init --remote
+
 # Created by(Main contributor)
 - lapiren
 - LunaticHarmony(munhyunsu@gmail.com)
