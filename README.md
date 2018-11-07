@@ -24,6 +24,8 @@ Salmon run reminder: Tweets salmon run schedule
 ## TODO
 - refactoring with test code
 - based on DNLab Discord Bot
+- change parsing rule
+- salmonrun schedule parsing rules
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
@@ -32,7 +34,8 @@ Salmon run reminder: Tweets salmon run schedule
   - only use higher 256px images, if not you get error
 - download font.ttf to fonts/
   - need English and Japanese font
-  
+- submodule update --init --remote
+
 # Created by(Main contributor)
 - lapiren
 - LunaticHarmony(munhyunsu@gmail.com)
