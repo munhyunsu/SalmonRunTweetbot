@@ -2,7 +2,7 @@ import unittest
 import unittest.mock
 import os
 
-from modules.file_reader import FileReader
+from discord_bot.modules.file_reader import FileReader
 
 FILENAME = 'test_file'
 

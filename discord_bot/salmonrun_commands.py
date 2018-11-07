@@ -1,10 +1,10 @@
 from discord.ext import commands
 
 from get_spread import get_meme_dict, get_translate_dict
-from modules.file_reader import FileReader
-from modules.meme_loader import MemeLoader
-from modules.random_selector import RandomSelector
-from modules.inkipedia_provider import InkipediaProvider
+from .modules.file_reader import FileReader
+from .modules.meme_loader import MemeLoader
+from .modules.random_selector import RandomSelector
+from .modules.inkipedia_provider import InkipediaProvider
 
 MEME = get_meme_dict()
 (WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO) = get_translate_dict()

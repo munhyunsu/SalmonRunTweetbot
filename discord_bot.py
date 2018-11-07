@@ -10,7 +10,8 @@ def main():
                        case_insensitive=True,
                        description=BOT_DESC)
 
-    extensions = ['DNLabDiscordBot.luha_commands', 'salmonrun_commands']
+    extensions = ['DNLabDiscordBot.luha.luha_commands',
+                  'discord_bot.salmonrun_commands']
 
     @bot.event
     async def on_ready():
