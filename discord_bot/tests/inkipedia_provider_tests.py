@@ -1,7 +1,7 @@
 import unittest
 import unittest.mock
 
-from modules.inkipedia_provider import InkipediaProvider
+from discord_bot.modules.inkipedia_provider import InkipediaProvider
 
 FILENAME = 'tests/latest_inkipedia_locale_tests.json'
 
