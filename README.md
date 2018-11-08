@@ -9,6 +9,7 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - OAuth Nintendo(pending)
+  - Maybe this is illegal.
 - Code rearrange(delete legacy code)
 - Tools for designer
 - Change method of import private keys
