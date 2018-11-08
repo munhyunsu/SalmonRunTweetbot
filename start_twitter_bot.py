@@ -25,7 +25,6 @@ def main():
     - Care about Scheduler, Coordinator, WikiParser
     - Repeat posting tweet about plan, start, end
       - using list?
-
     """
     # main sequence
     # 1.

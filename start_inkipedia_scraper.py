@@ -1,6 +1,7 @@
+import os
 import json
 
-from InkipediaCrawler.inkipedia_scraper import save_inkipedia_json
+from InkipediaCrawler.inkipedia_scraper.inkipedia_scraper import save_inkipedia_json
 from get_spread import get_translate_dict
 
 BASEFILE = 'latest_inkipedia.json'
@@ -42,7 +43,10 @@ def main():
         # cursor['stage2_ko'] = st_en_ko[cursor['stage2']]
 
     with open(LOCALEFILE, 'w') as f:
-        json.dump(inkipedia_json, f, indent=2)
+        json.dump(inkipedia_json, f, indent=2, ensure_ascii=False)
+
+    if os.path.exists(BASEFILE):
+        os.remove(BASEFILE)
 
 
 if __name__ == '__main__':
