@@ -1,10 +1,10 @@
 import tweepy
 
-from tweet_key import account_id, consumer_key, consumer_secret, access_token, access_token_secret
-from developer_key import developer_id
+from private.tweet_key import account_id, consumer_key, consumer_secret, access_token, access_token_secret
+from private.developer_key import developer_id
 
 
-class TweetAPI(object):
+class TwitterAPI(object):
     def __init__(self):
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_token_secret)
@@ -37,15 +37,15 @@ class TweetAPI(object):
         # self.direct_message(tweet_url)
         return tweet_url
 
-    def direct_message(self, message, receiver=developer_id):
-        """bugs
-        """
-        api = self.api
-        api.send_direct_message(user=receiver, text=message)
+    # def direct_message(self, message, receiver=developer_id):
+    #     """bugs
+    #     """
+    #     api = self.api
+    #     api.send_direct_message(user=receiver, text=message)
 
 
 def main():
-    tweet = TweetAPI()
+    tweet = TwitterAPI()
     # tweet.direct_message('here')
 
 

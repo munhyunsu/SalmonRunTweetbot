@@ -16,11 +16,18 @@ class ImageHandler(object):
             return images
         for path in get_files(self.ipath):
             name = os.path.basename(path)
-            name = name[:-4]  # remove ext
+            name = name[:-4] # remove ext
             images[name] = path
 
         return images
 
+    START = '''[연어런 시작]
+    시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
+    스테이지: {stage_en}/{stage_jp}
+    무기: {weapon1_en}/{weapon1_jp}
+    {weapon2_en}/{weapon2_jp}
+    {weapon3_en}/{weapon3_jp}
+    {weapon4_en}/{weapon4_jp}'''
     def get_merged_image(self, schedule):
         # prepare materials
         images = self.get_original_images()

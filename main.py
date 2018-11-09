@@ -4,7 +4,7 @@ import traceback
 
 from twitter import TweetAPI
 from scheduler import Scheduler
-from posting_maker import tweet_maker
+from twitter_bot.modules.posting_maker import tweet_maker
 from coordinator import Coordinator
 from image_handler import ImageHandler
 from twitter_bot.modules.file_handler import FileHandler
@@ -79,7 +79,7 @@ def main():
 
 def error_report_main(message):
     # temporary disable
-    # tweet = TweetAPI()
+    # tweet = TwitterAPI()
     # tweet.direct_message(message)
     print(message)
 

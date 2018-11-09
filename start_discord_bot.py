@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from discord_key import client_token
+from private.discord_key import client_token
 
 BOT_DESC = '''SalmonRun Reminder KR'''
 
