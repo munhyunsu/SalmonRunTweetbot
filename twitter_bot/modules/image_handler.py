@@ -64,13 +64,3 @@ class ImageHandler(object):
             merged_image.save(f, 'png')
 
         return save_path
-
-# new = Image.new("RGBA", (1920, 1080))
-# new.paste(stage.resize((1920, 1080)), (0, 0))
-# new.alpha_composite(back1)
-# new.paste(w1.resize((480, 480)), (480*0, 1080-480), w1.resize((480, 480)))
-# new.paste(w2.resize((480, 480)), (480*1, 1080-480), w2.resize((480, 480)))
-# new.paste(w3.resize((480, 480)), (480*2, 1080-480), w3.resize((480, 480)))
-# new.paste(w4.resize((480, 480)), (480*3, 1080-480), w4.resize((480, 480)))
-# with open('1.png', 'wb') as f:
-#     new.save(f, 'png')

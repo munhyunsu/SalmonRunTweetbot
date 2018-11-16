@@ -1,7 +1,8 @@
+import os
 import json
 
-from InkipediaCrawler.inkipedia_scraper import save_inkipedia_json
-from get_spread import get_translate_dict
+from InkipediaCrawler.inkipedia_scraper.inkipedia_scraper import save_inkipedia_json
+from gspread_handler.modules.gspread_handler import GSpreadHandler
 
 BASEFILE = 'latest_inkipedia.json'
 LOCALEFILE = 'latest_inkipedia_locale.json'
@@ -10,7 +11,8 @@ LOCALEFILE = 'latest_inkipedia_locale.json'
 def main():
     # prepare data
     save_inkipedia_json()
-    (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = get_translate_dict()
+    gspread = GSpreadHandler('private/Gspread-39d43309c65c.json')
+    (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = gspread.get_translate_dict()
     with open(BASEFILE, 'r') as f:
         inkipedia_json = json.load(f)
 
@@ -42,7 +44,10 @@ def main():
         # cursor['stage2_ko'] = st_en_ko[cursor['stage2']]
 
     with open(LOCALEFILE, 'w') as f:
-        json.dump(inkipedia_json, f, indent=2)
+        json.dump(inkipedia_json, f, indent=2, ensure_ascii=False)
+
+    if os.path.exists(BASEFILE):
+        os.remove(BASEFILE)
 
 
 if __name__ == '__main__':
