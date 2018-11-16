@@ -1,23 +1,25 @@
 from discord.ext import commands
 
-from get_spread import get_meme_dict, get_translate_dict
+from gspread_handler.modules.gspread_handler import GSpreadHandler
 from .modules.file_reader import FileReader
 from .modules.meme_loader import MemeLoader
 from .modules.random_selector import RandomSelector
 from .modules.inkipedia_provider import InkipediaProvider
 
-MEME = get_meme_dict()
-(WP_EN_JP, WP_EN_KO, ST_EN_JP, ST_EN_KO) = get_translate_dict()
 FILENAME = 'latest_url'
 
 
 class SalmonrunCommands(object):
     def __init__(self):
-        self.file_reader = FileReader('latest_url')
-        self.meme_loader = MemeLoader(MEME)
-        self.random_selector = RandomSelector(list(WP_EN_JP.keys()),
-                                              WP_EN_JP,
-                                              WP_EN_KO)
+        gspread = GSpreadHandler('private/Gspread-39d43309c65c.json')
+        (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = gspread.get_translate_dict()
+        meme = gspread.get_meme_dict()
+        self.file_reader = FileReader(FILENAME)
+        self.meme_loader = MemeLoader(meme)
+
+        self.random_selector = RandomSelector(list(wp_en_jp.keys()),
+                                              wp_en_jp,
+                                              wp_en_ko)
         self.inkipedia = InkipediaProvider()
 
     @commands.command(name='salmonrun',
