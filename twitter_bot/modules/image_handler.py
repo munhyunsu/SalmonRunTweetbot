@@ -48,10 +48,10 @@ class ImageHandler(object):
         if os.path.exists(self.file_handler.file_name):
             url = self.file_handler.read()
             target['tweet_url'] = url
-        start_time = ''.join(schedule['start_time'].rsplit(':', 1))
+        start_time = ''.join(target['start_time'].rsplit(':', 1))
         start_time = datetime.datetime.strptime(start_time, ISO8601)
         target['start_time'] = start_time
-        end_time = ''.join(schedule['end_time'].rsplit(':', 1))
+        end_time = ''.join(target['end_time'].rsplit(':', 1))
         end_time = datetime.datetime.strptime(end_time, ISO8601)
         target['end_time'] = end_time
         # prepare materials
