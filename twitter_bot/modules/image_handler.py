@@ -2,7 +2,24 @@ import os
 
 from PIL import Image, ImageFont, ImageDraw
 
-from utils import get_files
+
+def get_files(path, ext='', recursive=False):
+    import os
+    path_list = [path]
+
+    while len(path_list) > 0:
+        cpath = path_list.pop()
+        with os.scandir(cpath) as it:
+            for entry in it:
+                # if not entry.name.startswith('.') and entry.is_file():
+                if entry.is_file():
+                    if entry.name.endswith(ext):
+                        yield entry.path
+                else:
+                    if recursive:
+                        path_list.append(entry.path)
+
+    return path_list
 
 
 class ImageHandler(object):
@@ -16,7 +33,7 @@ class ImageHandler(object):
             return images
         for path in get_files(self.ipath):
             name = os.path.basename(path)
-            name = name[:-4] # remove ext
+            name = name[:-4]  # remove ext
             images[name] = path
 
         return images
