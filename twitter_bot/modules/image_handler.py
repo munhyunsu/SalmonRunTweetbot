@@ -38,23 +38,16 @@ class ImageHandler(object):
 
         return images
 
-    START = '''[연어런 시작]
-    시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
-    스테이지: {stage_en}/{stage_jp}
-    무기: {weapon1_en}/{weapon1_jp}
-    {weapon2_en}/{weapon2_jp}
-    {weapon3_en}/{weapon3_jp}
-    {weapon4_en}/{weapon4_jp}'''
     def get_merged_image(self, schedule):
         # prepare materials
         images = self.get_original_images()
-        image_title = '{stage_en}/{stage_jp}'.format_map(schedule)
+        image_title = '{stage}/{stage_jp}'.format_map(schedule)
         image_date = '{start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}'.format_map(schedule)
-        stage_name = schedule['stage_en']
-        weapon_names = [schedule['weapon1_en'],
-                        schedule['weapon2_en'],
-                        schedule['weapon3_en'],
-                        schedule['weapon4_en']]
+        stage_name = schedule['stage']
+        weapon_names = [schedule['weapon1'],
+                        schedule['weapon2'],
+                        schedule['weapon3'],
+                        schedule['weapon4']]
         stage = Image.open(images[stage_name])
         weapons = list()
         for weapon_name in weapon_names:

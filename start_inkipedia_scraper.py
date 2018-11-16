@@ -19,6 +19,8 @@ def main():
     # translate
     for index in range(0, 2):
         cursor = inkipedia_json['Salmon Run'][index]
+        cursor['stage_jp'] = st_en_jp[cursor['stage']]
+        cursor['stage_ko'] = st_en_ko[cursor['stage']]
         cursor['weapon1_jp'] = wp_en_jp[cursor['weapon1']]
         cursor['weapon1_ko'] = wp_en_ko[cursor['weapon1']]
         cursor['weapon2_jp'] = wp_en_jp[cursor['weapon2']]

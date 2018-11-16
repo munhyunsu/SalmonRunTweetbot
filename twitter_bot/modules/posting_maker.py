@@ -1,37 +1,54 @@
+import os
 import sys
+import datetime
+
+from twitter_bot.modules.coordinator import ISO8601, TIMEZONE
+from twitter_bot.modules.file_handler import FileHandler
 
 START = '''[연어런 시작]
 시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
-스테이지: {stage_en}/{stage_jp}
-무기: {weapon1_en}/{weapon1_jp}
-{weapon2_en}/{weapon2_jp}
-{weapon3_en}/{weapon3_jp}
-{weapon4_en}/{weapon4_jp}'''
+스테이지: {stage}/{stage_jp}
+무기: {weapon1}/{weapon1_jp}
+{weapon2}/{weapon2_jp}
+{weapon3}/{weapon3_jp}
+{weapon4}/{weapon4_jp}'''
 
 PLAN = '''[연어런 예정]
 시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
-스테이지: {stage_en}/{stage_jp}
-무기: {weapon1_en}/{weapon1_jp}
-{weapon2_en}/{weapon2_jp}
-{weapon3_en}/{weapon3_jp}
-{weapon4_en}/{weapon4_jp}'''
+스테이지: {stage}/{stage_jp}
+무기: {weapon1}/{weapon1_jp}
+{weapon2}/{weapon2_jp}
+{weapon3}/{weapon3_jp}
+{weapon4}/{weapon4_jp}'''
 
 END = '''[연어런 끝/다음 연어런]
 시간: {start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}
-스테이지: {stage_en}/{stage_jp}
-무기: {weapon1_en}/{weapon1_jp}
-{weapon2_en}/{weapon2_jp}
-{weapon3_en}/{weapon3_jp}
-{weapon4_en}/{weapon4_jp}'''
+스테이지: {stage}/{stage_jp}
+무기: {weapon1}/{weapon1_jp}
+{weapon2}/{weapon2_jp}
+{weapon3}/{weapon3_jp}
+{weapon4}/{weapon4_jp}'''
 
 BE1H = '''[종료 1시간 전]
 {tweet_url}'''
 
 
 class TweetMaker(object):
-    def get_text(self, schedule, types):
-        text = getattr(sys.modules[__name__], types)
+    def __init__(self):
+        self.file_handler = FileHandler()
 
+    def get_text(self, schedule, types):
+        if os.path.exists(self.file_handler.file_name):
+            url = self.file_handler.read()
+            schedule['tweet_url'] = url
+        start_time = ''.join(schedule['start_time'].rsplit(':', 1))
+        start_time = datetime.datetime.strptime(start_time, ISO8601)
+        schedule['start_time'] = start_time
+        end_time = ''.join(schedule['end_time'].rsplit(':', 1))
+        end_time = datetime.datetime.strptime(end_time, ISO8601)
+        schedule['end_time'] = end_time
+
+        text = getattr(sys.modules[__name__], types)
         return text.format_map(schedule)
 
 
