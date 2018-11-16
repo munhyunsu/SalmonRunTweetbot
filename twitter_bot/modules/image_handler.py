@@ -1,6 +1,10 @@
 import os
+import copy
+import datetime
 
 from PIL import Image, ImageFont, ImageDraw
+from twitter_bot.modules.file_handler import FileHandler
+from twitter_bot.modules.coordinator import ISO8601
 
 
 def get_files(path, ext='', recursive=False):
@@ -26,6 +30,7 @@ class ImageHandler(object):
     def __init__(self, ipath):
         self.ipath = ipath
         self.images = dict()
+        self.file_handler = FileHandler()
 
     def get_original_images(self):
         images = self.images
@@ -39,15 +44,25 @@ class ImageHandler(object):
         return images
 
     def get_merged_image(self, schedule):
+        target = copy.deepcopy(schedule)
+        if os.path.exists(self.file_handler.file_name):
+            url = self.file_handler.read()
+            target['tweet_url'] = url
+        start_time = ''.join(schedule['start_time'].rsplit(':', 1))
+        start_time = datetime.datetime.strptime(start_time, ISO8601)
+        target['start_time'] = start_time
+        end_time = ''.join(schedule['end_time'].rsplit(':', 1))
+        end_time = datetime.datetime.strptime(end_time, ISO8601)
+        target['end_time'] = end_time
         # prepare materials
         images = self.get_original_images()
-        image_title = '{stage}/{stage_jp}'.format_map(schedule)
-        image_date = '{start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}'.format_map(schedule)
-        stage_name = schedule['stage']
-        weapon_names = [schedule['weapon1'],
-                        schedule['weapon2'],
-                        schedule['weapon3'],
-                        schedule['weapon4']]
+        image_title = '{stage}/{stage_jp}'.format_map(target)
+        image_date = '{start_time:%m/%d %H:%M} - {end_time:%m/%d %H:%M}'.format_map(target)
+        stage_name = target['stage']
+        weapon_names = [target['weapon1'],
+                        target['weapon2'],
+                        target['weapon3'],
+                        target['weapon4']]
         stage = Image.open(images[stage_name])
         weapons = list()
         for weapon_name in weapon_names:

@@ -23,19 +23,21 @@ class TwitterAPI(object):
 
     def post_tweet(self, text):
         api = self.api
-        status = api.update_status(text)
-        tweet_url = 'https://twitter.com/{0}/status/{1}'
-        tweet_url = tweet_url.format(account_id, status.id_str)
-        # self.direct_message(tweet_url)
-        return tweet_url
+        # status = api.update_status(text)
+        # tweet_url = 'https://twitter.com/{0}/status/{1}'
+        # tweet_url = tweet_url.format(account_id, status.id_str)
+        # # self.direct_message(tweet_url)
+        # return tweet_url
+        return 'good'
 
     def post_tweet_with_image(self, text, image):
         api = self.api
-        status = api.update_with_media(image, text)
-        tweet_url = 'https://twitter.com/{0}/status/{1}'
-        tweet_url = tweet_url.format(account_id, status.id_str)
-        # self.direct_message(tweet_url)
-        return tweet_url
+        # status = api.update_with_media(image, text)
+        # tweet_url = 'https://twitter.com/{0}/status/{1}'
+        # tweet_url = tweet_url.format(account_id, status.id_str)
+        # # self.direct_message(tweet_url)
+        # return tweet_url
+        return 'good'
 
     # def direct_message(self, message, receiver=developer_id):
     #     """bugs
