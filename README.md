@@ -4,14 +4,11 @@ Salmon run reminder: Tweets salmon run schedule
 ## Feature
 - Search tweets by hash-tag and re-tweet them
 - Get schedules from Splatoon wiki
-- (Disable) Repeat crawl and post until success when the internet connection is unstable
 - Post Salmon run schedule and it's image
 
 ## TODO
 - OAuth Nintendo(pending)
   - Maybe this is illegal.
-- Code rearrange(delete legacy code)
-- Tools for designer
 - Change method of import private keys
 
 # Discord Chatting room Bot
