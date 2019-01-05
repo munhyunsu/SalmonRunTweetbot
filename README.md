@@ -11,13 +11,14 @@ Salmon run reminder: Tweets salmon run schedule
   - Maybe this is illegal.
 - Change method of import private keys
 
-# Discord Chatting room Bot
+# Discord Chatting Bot
 
 ## Features
+- Inherit DNLab Discord Bot's LuHaBot
 - Post url of latest salmon run tweet
 - Post meme url
-- Select various options
 - Random weapons
+
 
 ## TODO
 - refactoring with test code
