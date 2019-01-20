@@ -19,11 +19,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Post meme url
 - Random weapons
 
-
 ## TODO
 - refactoring with test code
-- based on DNLab Discord Bot
-- change parsing rule
 - salmonrun schedule parsing rules
 
 # Install(Usage)
