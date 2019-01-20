@@ -21,6 +21,7 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - refactoring with test code
+- need viewer
 - salmonrun schedule parsing rules
 
 # Install(Usage)
