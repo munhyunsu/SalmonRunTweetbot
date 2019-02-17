@@ -7,8 +7,6 @@ Salmon run reminder: Tweets salmon run schedule
 - Post Salmon run schedule and it's image
 
 ## TODO
-- OAuth Nintendo(pending)
-  - Maybe this is illegal.
 - Change method of import private keys
 
 # Discord Chatting Bot
