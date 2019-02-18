@@ -21,6 +21,7 @@ Salmon run reminder: Tweets salmon run schedule
 - refactoring with test code
 - need viewer
 - salmonrun schedule parsing rules
+- Change method of import private keys
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
