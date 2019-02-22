@@ -8,6 +8,7 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - Change method of import private keys
+- Image layout
 
 # Discord Chatting Bot
 
