@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from private.discord_key import client_token
+from private.discord_key import CLIENT_TOKEN
 
 BOT_DESC = '''SalmonRun Reminder KR'''
 
@@ -23,7 +23,7 @@ def main():
     for extension in extensions:
         bot.load_extension(extension)
 
-    bot.run(client_token)
+    bot.run(CLIENT_TOKEN)
 
 
 if __name__ == '__main__':
