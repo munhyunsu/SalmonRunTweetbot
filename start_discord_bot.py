@@ -6,7 +6,7 @@ BOT_DESC = '''SalmonRun Reminder KR'''
 
 
 def main():
-    bot = commands.Bot(command_prefix='$',
+    bot = commands.Bot(command_prefix='!',
                        case_insensitive=True,
                        description=BOT_DESC)
 
