@@ -2,7 +2,7 @@ import asyncio
 
 import discord
 
-from private.discord_key import CLIENT_TOKEN, GUILD_ID
+from private.discord_key import CLIENT_TOKEN, GUILD_ID, ADMIN_IDS
 
 
 def main():
@@ -22,6 +22,8 @@ def main():
         if message.type != discord.message.MessageType.default:
             return
         is_delete = True
+        if message.author.id in ADMIN_IDS:
+            is_delete = False
         mentions = message.role_mentions
         for mention in mentions:
             if mention.name.lower() == 'admin':
