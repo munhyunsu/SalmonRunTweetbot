@@ -16,6 +16,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Post url of latest salmon run tweet
 - Post meme url
 - Random weapons
+- Remove non-command chat
 
 ## TODO
 - refactoring with test code
