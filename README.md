@@ -8,6 +8,9 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - Image layout
+- Refactor
+  - Need to re-organize source code
+  - Remove modules directory
 
 # Discord Chatting Bot
 
