@@ -1,7 +1,7 @@
 import unittest
 import unittest.mock
 
-from discord_bot.modules.random_selector import RandomSelector
+from discord_bot.random_selector import RandomSelector
 
 
 class RandomSelectorTestCase(unittest.TestCase):

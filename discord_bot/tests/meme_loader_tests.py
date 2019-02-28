@@ -1,7 +1,7 @@
 import unittest
 import unittest.mock
 
-from discord_bot.modules.meme_loader import MemeLoader
+from discord_bot.meme_loader import MemeLoader
 
 
 class MemeLoaderTestCase(unittest.TestCase):

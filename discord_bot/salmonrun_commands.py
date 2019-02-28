@@ -1,10 +1,10 @@
 from discord.ext import commands
 
 from gspread_handler.modules.gspread_handler import GSpreadHandler
-from .modules.file_reader import FileReader
-from .modules.meme_loader import MemeLoader
-from .modules.random_selector import RandomSelector
-from .modules.inkipedia_provider import InkipediaProvider
+from discord_bot.file_reader import FileReader
+from discord_bot.meme_loader import MemeLoader
+from discord_bot.random_selector import RandomSelector
+from discord_bot.inkipedia_provider import InkipediaProvider
 
 FILENAME = 'latest_url'
 
