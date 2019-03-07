@@ -55,7 +55,7 @@ def main():
             elif len(vc_list) > 1:
                 for vc in vc_list[:-1]:
                     await vc.delete()
-            await asyncio.sleep(60*5)  # 5 minutes
+            await asyncio.sleep(60*1)  # x minutes
 
     client.loop.create_task(manage_voice_channel())
     client.run(CLIENT_TOKEN)
