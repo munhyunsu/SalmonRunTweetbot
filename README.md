@@ -29,7 +29,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Refactor
   - Need to re-organize source code
   - Remove modules directory
-- Change bot.command to normal chatbot
+- Change bot command to normal chatbot
+  - Need to implement help command
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
