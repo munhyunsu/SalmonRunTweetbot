@@ -31,6 +31,7 @@ Salmon run reminder: Tweets salmon run schedule
   - Remove modules directory
 - Change bot command to normal chatbot
   - Need to implement help command
+- Yeild loop by minutes
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
