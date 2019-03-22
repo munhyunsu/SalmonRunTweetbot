@@ -42,6 +42,9 @@ Salmon run reminder: Tweets salmon run schedule
   - need English and Japanese font
 - submodule update --init --remote
 
+# White paper
+- Need to modulize this project
+
 # Created by(Main contributor)
 - lapiren
 - LunaticHarmony(munhyunsu@gmail.com)
