@@ -31,8 +31,8 @@ class Coordinator(object):
         return None
 
     def get_end_schedule(self, now=datetime.datetime.now(TIMEZONE)):
-        if ((not self._is_open(now=now)) and
-                (self._is_open(now=now - datetime.timedelta(hours=1)))):
+        if ((not self.is_open(now=now)) and
+                (self.is_open(now=now - datetime.timedelta(hours=1)))):
             for schedule in self.schedules:
                 start_time = ''.join(schedule['start_time'].rsplit(':', 1))
                 start_time = datetime.datetime.strptime(start_time, ISO8601)
@@ -43,7 +43,7 @@ class Coordinator(object):
                     return schedule
         return None
 
-    def _is_open(self, now=datetime.datetime.now(TIMEZONE)):
+    def is_open(self, now=datetime.datetime.now(TIMEZONE)):
         for schedule in self.schedules:
             start_time = ''.join(schedule['start_time'].rsplit(':', 1))
             start_time = datetime.datetime.strptime(start_time, ISO8601)

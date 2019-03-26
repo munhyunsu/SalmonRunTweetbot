@@ -30,34 +30,37 @@ def main():
     # 3. prepare upload
     tweet = TwitterAPI()
     image_handler = ImageHandler('./images/')
-    latest_writer = FileHandler()
+    latest_writer = FileHandler('')
     tweet_maker = TweetMaker()
 
     print(datetime.datetime.now(), inkipedia['Salmon Run'])
 
     # switch
     text = None
-    start_schedule = coordinator.get_start_schedule()
-    if start_schedule is not None:
-        schedule = start_schedule
-        text = tweet_maker.get_text(schedule, types='START')
-        image_name = image_handler.get_merged_image(schedule)
-        tweet_url = tweet.post_tweet_with_image(text, image_name)
-        latest_writer.write(tweet_url)
     end_schedule = coordinator.get_end_schedule()
     if end_schedule is not None:
         schedule = end_schedule
         text = tweet_maker.get_text(schedule, types='END')
         image_name = image_handler.get_merged_image(schedule)
         tweet_url = tweet.post_tweet_with_image(text, image_name)
-        latest_writer.write(tweet_url)
+        if not coordinator.is_open():
+            latest_writer.write(tweet_url)
     plan_schedule = coordinator.get_plan_schedule()
     if plan_schedule is not None:
         schedule = plan_schedule
         text = tweet_maker.get_text(schedule, types='PLAN')
         image_name = image_handler.get_merged_image(schedule)
         tweet_url = tweet.post_tweet_with_image(text, image_name)
-        latest_writer.write(tweet_url)
+        if not coordinator.is_open():
+            latest_writer.write(tweet_url)
+    start_schedule = coordinator.get_start_schedule()
+    if start_schedule is not None:
+        schedule = start_schedule
+        text = tweet_maker.get_text(schedule, types='START')
+        image_name = image_handler.get_merged_image(schedule)
+        tweet_url = tweet.post_tweet_with_image(text, image_name)
+        if not coordinator.is_open():
+            latest_writer.write(tweet_url)
     be1h_schedule = coordinator.get_1h_before_end_schedule()
     if be1h_schedule is not None:
         schedule = be1h_schedule
