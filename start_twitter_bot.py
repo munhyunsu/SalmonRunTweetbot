@@ -30,7 +30,7 @@ def main():
     # 3. prepare upload
     tweet = TwitterAPI()
     image_handler = ImageHandler('./images/')
-    latest_writer = FileHandler('')
+    latest_writer = FileHandler()
     tweet_maker = TweetMaker()
 
     print(datetime.datetime.now(), inkipedia['Salmon Run'])
