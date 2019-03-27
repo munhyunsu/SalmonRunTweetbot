@@ -59,7 +59,7 @@ def main():
         text = tweet_maker.get_text(schedule, types='START')
         image_name = image_handler.get_merged_image(schedule)
         tweet_url = tweet.post_tweet_with_image(text, image_name)
-        if not coordinator.is_open():
+        if coordinator.is_open():
             latest_writer.write(tweet_url)
     be1h_schedule = coordinator.get_1h_before_end_schedule()
     if be1h_schedule is not None:
