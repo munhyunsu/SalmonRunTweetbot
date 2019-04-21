@@ -45,6 +45,7 @@ Salmon run reminder: Tweets salmon run schedule
 
 # White paper
 - Need to modulize this project
+  - To be interface inheritance
 
 # Created by(Main contributor)
 - lapiren
