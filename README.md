@@ -11,6 +11,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Refactor
   - Need to re-organize source code
   - Remove modules directory
+- Nomalize
 
 # Discord Chatting Bot
 
