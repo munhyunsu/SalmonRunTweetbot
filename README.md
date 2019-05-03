@@ -7,11 +7,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Post Salmon run schedule and it's image
 
 ## TODO
-- Image layout
-- Refactor
-  - Need to re-organize source code
-  - Remove modules directory
-- Nomalize
+- Using [routine](https://github.com/munhyunsu/routine)
 
 # Discord Chatting Bot
 
