@@ -40,8 +40,7 @@ Salmon run reminder: Tweets salmon run schedule
 - submodule update --init --remote
 
 # White paper
-- Need to modulize this project
-  - To be interface inheritance
+- KNOM Conference
 
 # Created by(Main contributor)
 - lapiren
