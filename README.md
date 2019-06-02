@@ -29,6 +29,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Change bot command to normal chatbot
   - Need to implement help command
 - Yeild loop by minutes
+- Log chat and command
+- Command for creating chat room and voice room
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
