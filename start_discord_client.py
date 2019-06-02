@@ -17,6 +17,7 @@ def main():
 
     @client.event
     async def on_message(message):
+    # TODO(LuHa): Log message
         if message.author == client.user:
             return
         if message.type != discord.message.MessageType.default:
