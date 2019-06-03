@@ -35,6 +35,7 @@ def main():
             await message.delete()
 
     async def manage_voice_channel():
+        # TODO(LuHa): new voice, text channel
         await client.wait_until_ready()
         while not client.is_closed():
             guild = client.get_guild(id=GUILD_ID)
