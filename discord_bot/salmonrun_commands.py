@@ -23,7 +23,7 @@ class SplatoonCommands(object):
         self.inkipedia = InkipediaProvider()
 
     @commands.command(name='salmonrun',
-                      aliases=['연어런', '연어'])
+                      aliases=['salmon', '연어런', '연어'])
     async def salmonrun(self, ctx, *args):
         """연어런 알림 봇의 최신 트윗을 가져옵니다. '!연어'"""
         await ctx.send(self.file_reader.get_file_content(ctx, args))
