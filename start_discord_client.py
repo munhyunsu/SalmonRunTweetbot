@@ -82,7 +82,7 @@ def main():
             for tc in text_channels:
                 if not tc.name.startswith('salmonrun'):
                     continue
-                message = (await tc.history(limit=1).flatten())[0]
+                message = await tc.history(limit=1).flatten()
                 if len(message) == 0:
                     await tc.send('New text channel')
                 else:
