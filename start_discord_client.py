@@ -65,16 +65,16 @@ def main():
                     continue
                 if len(vc.members) == 0:
                     vc_list.append(vc)
-            if len(vc_list) == 0:
-                voice_category = None
-                for ct in guild.categories:
-                    if ct.name == 'Voice Channels':
-                        voice_category = ct
-                        break
-                new = await guild.create_voice_channel('Salmonrun', category=voice_category)
-                await new.edit(user_limit=4)
-            elif len(vc_list) > 1:
-                for vc in vc_list[:-1]:
+            # if len(vc_list) == 0:
+            #     voice_category = None
+            #     for ct in guild.categories:
+            #         if ct.name == 'Voice Channels':
+            #             voice_category = ct
+            #             break
+                # new = await guild.create_voice_channel('Salmonrun', category=voice_category)
+                # await new.edit(user_limit=4)
+            if len(vc_list) > 1:
+                for vc in vc_list:
                     await vc.delete()
 
             # manage text channel
@@ -83,10 +83,14 @@ def main():
                 if not tc.name.startswith('salmonrun'):
                     continue
                 message = (await tc.history(limit=1).flatten())[0]
-                latest_dt = message.created_at
-                current_dt = datetime.datetime.now()
-                if (current_dt - latest_dt).total_seconds() > (60*60):
-                    await tc.delete()
+                if len(message) == 0:
+                    await tc.send('New text channel')
+                else:
+                    message = message[0]
+                    latest_dt = message.created_at
+                    current_dt = datetime.datetime.now()
+                    if (current_dt - latest_dt).total_seconds() > (60*60):
+                        await tc.delete()
 
             await asyncio.sleep(60*5)  # x minutes
 
