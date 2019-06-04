@@ -5,11 +5,12 @@ from discord_bot.file_reader import FileReader
 from discord_bot.meme_loader import MemeLoader
 from discord_bot.random_selector import RandomSelector
 from discord_bot.inkipedia_provider import InkipediaProvider
+from discord_bot.channel_manager import ChannelManager
 
 FILENAME = 'latest_url'
 
 
-class SplatoonCommands(object):
+class SplatoonCommands(commands.Cog):
     def __init__(self):
         gspread = GSpreadHandler('private/Gspread-39d43309c65c.json')
         (wp_en_jp, wp_en_ko, st_en_jp, st_en_ko) = gspread.get_translate_dict()
@@ -21,6 +22,7 @@ class SplatoonCommands(object):
                                               wp_en_jp,
                                               wp_en_ko)
         self.inkipedia = InkipediaProvider()
+        self.channel = ChannelManager()
 
     @commands.command(name='salmonrun',
                       aliases=['salmon', '연어런', '연어'])
@@ -57,6 +59,13 @@ class SplatoonCommands(object):
     async def league(self, ctx, *args):
         """리그 배틀 스테이지를 확인합니다. '!리그'"""
         await ctx.send(self.inkipedia.get_league(ctx, args))
+
+    @commands.command(name='channel',
+                      aliases=['채널'])
+    async def channel(self, ctx, *args):
+        """채널을 생성합니다. '!채널'"""
+        print('?')
+        await self.channel.create_channel(ctx, args)
 
 
 def setup(bot):
