@@ -17,6 +17,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Post meme url
 - Random weapons
 - Remove non-command chat
+- Manage chat/voice channel
 
 ## TODO
 - refactoring with test code
@@ -28,9 +29,6 @@ Salmon run reminder: Tweets salmon run schedule
   - Remove modules directory
 - Change bot command to normal chatbot
   - Need to implement help command
-- Yeild loop by minutes
-- Log chat and command
-- Command for creating chat room and voice room
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
