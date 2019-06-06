@@ -64,17 +64,20 @@ def main():
                 if not vc.name.startswith('Salmonrun'):
                     continue
                 if len(vc.members) == 0:
-                    vc_list.append(vc)
-            # if len(vc_list) == 0:
-            #     voice_category = None
-            #     for ct in guild.categories:
-            #         if ct.name == 'Voice Channels':
-            #             voice_category = ct
-            #             break
-                # new = await guild.create_voice_channel('Salmonrun', category=voice_category)
-                # await new.edit(user_limit=4)
-            if len(vc_list) > 0:
-                for vc in vc_list:
+                    if vc.name == 'Salmonrun':
+                        vc_list.append(vc)
+                    else:
+                        vc.delete()
+            if len(vc_list) == 0:
+                voice_category = None
+                for ct in guild.categories:
+                    if ct.name == 'Voice Channels':
+                        voice_category = ct
+                        break
+                new = await guild.create_voice_channel('Salmonrun', category=voice_category)
+                await new.edit(user_limit=4)
+            elif len(vc_list) > 1:
+                for vc in vc_list[1:]:
                     await vc.delete()
 
             # manage text channel
