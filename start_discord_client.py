@@ -48,6 +48,7 @@ def main():
                 is_delete = False
         if message.content.startswith('!'):
             is_delete = False
+        # TODO: check the channel which is startswith salmonrun
         if is_delete:
             await message.delete()
 
