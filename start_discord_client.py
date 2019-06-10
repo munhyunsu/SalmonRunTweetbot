@@ -91,13 +91,17 @@ def main():
                 if len(message) == 0:
                     await tc.send('New text channel')
                 else:
-                    message = message[0]
-                    latest_dt = message.created_at
-                    current_dt = datetime.datetime.now()
-                    if (current_dt - latest_dt).total_seconds() > (60*60):
-                        await tc.delete()
+                    # message = message[0]
+                    # latest_dt = message.created_at
+                    # current_dt = datetime.datetime.now()
+                    # if (current_dt - latest_dt).total_seconds() > (60*60):
+                    #     print(current_dt)
+                    #     print(latest_dt)
+                    #     print((current_dt - latest_dt).total_seconds())
+                    #     await tc.delete()
+                    pass
 
-            await asyncio.sleep(60*5)  # x minutes
+            await asyncio.sleep(60*1)  # x minutes
 
     client.loop.create_task(manage_voice_channel())
     client.run(CLIENT_TOKEN)
