@@ -8,7 +8,7 @@ class ChannelManager(object):
         if len(args) < 1:
             return '채널 [텍스트|보이스] [인원]'
         guild = ctx.guild
-        mode = args[0].lower()
+        mode = args[0]
         if len(args) > 1:
             limit = min(int(args[1]), 99)
         else:
@@ -21,7 +21,7 @@ class ChannelManager(object):
         }
         rand = self._get_channel_rand()
         name = 'Salmonrun-{0}'.format(rand)
-        if mode in ['텍스트', 'text']:
+        if mode.lower() in ['텍스트', 'text']:
             text_category = None
             for ct in guild.categories:
                 if ct.name == 'Text Channels':
@@ -29,7 +29,7 @@ class ChannelManager(object):
                     break
             await guild.create_text_channel(name, category=text_category, overwrites=overwrites)
             rand = rand.lower()
-        elif mode in ['보이스', 'voice']:
+        elif mode.lower() in ['보이스', 'voice']:
             voice_category = None
             for ct in guild.categories:
                 if ct.name == 'Voice Channels':
