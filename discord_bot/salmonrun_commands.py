@@ -64,8 +64,7 @@ class SplatoonCommands(commands.Cog):
                       aliases=['채널'])
     async def channel(self, ctx, *args):
         """채널을 생성합니다. '!채널'"""
-        print('?')
-        await self.channel.create_channel(ctx, args)
+        await ctx.send(await self.channel.create_channel(ctx, args))
 
 
 def setup(bot):

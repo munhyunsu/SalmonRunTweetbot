@@ -48,7 +48,8 @@ def main():
                 is_delete = False
         if message.content.startswith('!'):
             is_delete = False
-        # TODO: check the channel which is startswith salmonrun
+        if message.channel.name.startswith('salmonrun'):
+            is_delete = False
         if is_delete:
             await message.delete()
 
@@ -68,7 +69,7 @@ def main():
                     if vc.name == 'Salmonrun':
                         vc_list.append(vc)
                     else:
-                        vc.delete()
+                        await vc.delete()
             if len(vc_list) == 0:
                 voice_category = None
                 for ct in guild.categories:

@@ -13,25 +13,41 @@ class ChannelManager(object):
             limit = min(int(args[1]), 99)
         else:
             limit = 99
+        overwrites = {
+            guild.default_role: discord.PermissionOverwrite(read_messages=False),
+            guild.me: discord.PermissionOverwrite(read_messages=True,
+                                                  send_messages=True,
+                                                  manage_roles=True)
+        }
+        rand = self._get_channel_rand()
+        name = 'Salmonrun-{0}'.format(rand)
         if mode in ['텍스트', 'text']:
             text_category = None
             for ct in guild.categories:
                 if ct.name == 'Text Channels':
                     text_category = ct
                     break
-            name = self._get_channel_name()
-            await guild.create_text_channel(name, category=text_category)
+            await guild.create_text_channel(name, category=text_category, overwrites=overwrites)
+            rand = rand.lower()
         elif mode in ['보이스', 'voice']:
             voice_category = None
             for ct in guild.categories:
                 if ct.name == 'Voice Channels':
                     voice_category = ct
                     break
-            name = self._get_channel_name()
-            new = await guild.create_voice_channel(name, category=voice_category)
+            new = await guild.create_voice_channel(name, category=voice_category, overwrites=overwrites)
             await new.edit(user_limit=limit)
+        else:  # assign rule for connect private channel
+            for channel in guild.channels:
+                if channel.name.endswith(mode):
+                    await channel.set_permissions(ctx.author,
+                                                  read_messages=True,
+                                                  send_messages=True)
+                    return '{0.author.mention} {1} 권한 설정 완료.'.format(ctx, mode)
+            return '{0.author.mention} {1} 채널을 찾지 못 했습니다.'.format(ctx, mode)
+        return '{0.author.mention} 채널 {1}을 입력하여 입장하세요.'.format(ctx, rand)
 
-    def _get_channel_name(self):
+    def _get_channel_rand(self):
         candidate = string.ascii_letters + string.digits
         rand = ''.join(random.choices(candidate, k=5))
-        return 'Salmonrun-{0}'.format(rand)
+        return rand
