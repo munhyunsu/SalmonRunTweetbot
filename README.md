@@ -29,7 +29,6 @@ Salmon run reminder: Tweets salmon run schedule
   - Remove modules directory
 - Change bot command to normal chatbot
   - Need to implement help command
-- (Bug) remove chat at Salmonrun text channel
 
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
