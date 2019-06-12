@@ -39,6 +39,7 @@ def main():
         if message.type != discord.message.MessageType.default:
             return
         # Check other status
+        # TODO: More effectivity
         is_delete = True
         if message.author.id in ADMIN_IDS:
             is_delete = False
