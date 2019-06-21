@@ -9,6 +9,7 @@ Salmon run reminder: Tweets salmon run schedule
 ## TODO
 - Using [routine](https://github.com/munhyunsu/routine)
 
+
 # Discord Chatting Bot
 
 ## Features
@@ -30,6 +31,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Change bot command to normal chatbot
   - Need to implement help command
 
+
 # Install(Usage)
 - set Google Spreadsheet API to \*.json
 - set Twitter API to tweet\_key.py
@@ -39,11 +41,14 @@ Salmon run reminder: Tweets salmon run schedule
   - need English and Japanese font
 - submodule update --init --remote
 
+
 # White paper
 - [KNOM 2019 Conference Paper](https://drive.google.com/open?id=1YOkhREhLsgatRKw8BV8rBXY-ENE_mjFs)
 - [KNOM 2019 Presentation Slide](https://drive.google.com/open?id=1SXGlTNLNH55CuOQ1HFS_AXmbk92-w_sC)
 - [KNOM 2019 Presentation Video](https://youtu.be/7FkALrlJfos)
 
+
 # Created by(Main contributor)
 - lapiren
 - LunaticHarmony(munhyunsu@gmail.com)
+
