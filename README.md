@@ -21,15 +21,9 @@ Salmon run reminder: Tweets salmon run schedule
 - Manage chat/voice channel
 
 ## TODO
-- refactoring with test code
 - need viewer
 - salmonrun schedule parsing rules
 - Change method of import private keys
-- Refactor
-  - Need to re-organize source code
-  - Remove modules directory
-- Change bot command to normal chatbot
-  - Need to implement help command
 
 
 # Install(Usage)
