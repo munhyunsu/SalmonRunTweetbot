@@ -29,6 +29,7 @@ def main():
                     'channel': message.channel,
                     'author': message.author,
                     'content': message.content}
+        ## replace quote word for csv compatible
         for key in log_data.keys():
             log_data[key] = str(log_data[key]).replace('"', '""')
         msg = '"{created_at}","{channel}","{author}","{content}"'.format_map(log_data)
@@ -39,20 +40,18 @@ def main():
         if message.type != discord.message.MessageType.default:
             return
         # Check other status
-        # TODO: More effectivity
-        is_delete = True
         if message.author.id in ADMIN_IDS:
-            is_delete = False
+            return
         mentions = message.role_mentions
         for mention in mentions:
             if mention.name.lower() == 'admin':
-                is_delete = False
+                return
         if message.content.startswith('!'):
-            is_delete = False
+            return
         if message.channel.name.startswith('salmonrun'):
-            is_delete = False
-        if is_delete:
-            await message.delete()
+            return
+        # delete message when flow reached here
+        await message.delete()
 
     async def manage_voice_channel():
         # Automatic voice channel remove
@@ -106,3 +105,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
