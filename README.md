@@ -8,7 +8,8 @@ Salmon run reminder: Tweets salmon run schedule
 
 ## TODO
 - Using [routine](https://github.com/munhyunsu/routine)
-
+- Change auto generated image layout
+  - Requested by User
 
 # Discord Chatting Bot
 
