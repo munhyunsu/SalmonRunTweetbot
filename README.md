@@ -7,8 +7,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Post Salmon run schedule and it's image
 
 ## TODO
-- Using [routine](https://github.com/munhyunsu/routine)
-- Change auto generated image layout
+- (Pending) Using [routine](https://github.com/munhyunsu/routine)
+- (Pending) Change auto generated image layout
   - Requested by User
 
 # Discord Chatting Bot
@@ -22,7 +22,7 @@ Salmon run reminder: Tweets salmon run schedule
 - Manage chat/voice channel
 
 ## TODO
-- need viewer
+- (Canceled)need viewer
 - salmonrun schedule parsing rules
 - Change method of import private keys
 
