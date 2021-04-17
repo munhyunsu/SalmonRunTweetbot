@@ -11,27 +11,27 @@ class InkipediaProvider(object):
     def get_regular(self, ctx, args=()):
         self._reload()
         string = ('**[Regular Battle]**\n'
-                  '{time}, __{rule}__\n'
+                  'Now, __{rule}__\n'
                   '{stage1}, {stage2}\n').format_map(self.data['Regular Battle'][0])
-        string = string + ('{time}, __{rule}__\n'
+        string = string + ('Next, __{rule}__\n'
                            '{stage1}, {stage2}\n').format_map(self.data['Regular Battle'][1])
         return string
 
     def get_ranked(self, ctx, args=()):
         self._reload()
         string = ('**[Ranked Battle]**\n'
-                  '{time}, __{rule}__\n'
+                  'Now, __{rule}__\n'
                   '{stage1}, {stage2}\n').format_map(self.data['Ranked Battle'][0])
-        string = string + ('{time}, __{rule}__\n'
+        string = string + ('Next, __{rule}__\n'
                            '{stage1}, {stage2}\n').format_map(self.data['Ranked Battle'][1])
         return string
 
     def get_league(self, ctx, args=()):
         self._reload()
         string = ('**[League Battle]**\n'
-                  '{time}, __{rule}__\n'
+                  'Now, __{rule}__\n'
                   '{stage1}, {stage2}\n').format_map(self.data['League Battle'][0])
-        string = string + ('{time}, __{rule}__\n'
+        string = string + ('Next, __{rule}__\n'
                            '{stage1}, {stage2}\n').format_map(self.data['League Battle'][1])
         return string
 
