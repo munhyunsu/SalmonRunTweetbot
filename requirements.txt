@@ -5,3 +5,4 @@ BeautifulSoup4
 Pillow
 discord.py
 pandas
+lxml
