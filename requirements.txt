@@ -4,3 +4,4 @@ oauth2client
 BeautifulSoup4
 Pillow
 discord.py
+pandas
