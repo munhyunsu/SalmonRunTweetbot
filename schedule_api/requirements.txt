@@ -1,0 +1,7 @@
+pip
+wheel
+gspread
+oauth2client
+fastapi
+uvicorn[standard]
+gunicorn
