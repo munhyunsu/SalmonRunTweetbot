@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from . import models, schemas
 
 
-def get_salmonrun(db: Session, timequery: int):
+def get_salmonruns(db: Session, timequery: int):
     return db.query(models.Salmonrun).filter(models.Salmonrun.timeend > timequery).all()
 
 
