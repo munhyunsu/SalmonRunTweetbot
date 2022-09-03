@@ -1,5 +1,6 @@
 # virtual env
 venv
+*.db
 
 # Swap
 [._]*.s[a-v][a-z]

@@ -2,7 +2,7 @@ pip
 wheel
 gspread
 oauth2client
-SQLAlchemy
+sqlalchemy
 fastapi
 uvicorn[standard]
 gunicorn
