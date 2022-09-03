@@ -4,7 +4,7 @@ import models, schemas
 
 
 def get_salmonruns(db: Session, timequery: int):
-    return db.query(models.Salmonrun).filter(models.Salmonrun.timeend > timequery).all()
+    return db.query(models.Salmonrun).filter(models.Salmonrun.timeend > timequery).order_by(models.Salmonrun.timestart.asc()).all()
 
 
 def get_salmonrun_by_timestart(db: Session, timestart: int):
