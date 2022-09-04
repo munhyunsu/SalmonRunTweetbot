@@ -40,7 +40,9 @@ def shutdown_event():
 
 
 @app.post('/salmonrun/', response_model=schemas.Salmonrun)
-def create_salmonrun(salmonrun: schemas.SalmonrunCreate, db: Session = Depends(get_db)):
+def create_salmonrun(salmonrun: schemas.SalmonrunCreate, api_key: str, db: Session = Depends(get_db)):
+    if api_key != config.api_key:
+        raise HTTPException(status_code=403, detail='API not authorized')
     db_salmonrun = crud.get_salmonrun_by_timestart(db, timestart=salmonrun.timestart)
     if db_salmonrun:
         raise HTTPException(status_code=404, detail='timestart already registered')
