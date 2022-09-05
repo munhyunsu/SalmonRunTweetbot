@@ -10,10 +10,19 @@ python3 main_create_key.py
 # Simple run (development)
 
 ```bash
-uvicorn main:app --reload --port 8888
+uvicorn main:app --reload --port 10009 --root-path '/splatoon'
+```
+
+- For url redirection [traefic](https://github.com/traefik/traefik/releases)
+
+```bash
+cd ./etc/traefik/
+../../traefik_v2.8.4_linux_amd64/traefik --configFile ./traefik.toml
 ```
 
 # Production mode (gunicorn)
+
+## Downloads
 
 1. Create root path venv and install requirements
 
