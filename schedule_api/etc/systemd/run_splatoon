@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /opt/splatoon_venv
+source bin/activate
+
+cd /opt/splatoon
+/opt/bitsql_venv/bin/gunicorn --workers 4 --worker-class uvicorn.workers.UvicornWorker --chdir [PATH] --bind 127.0.0.1:10008 main:app
