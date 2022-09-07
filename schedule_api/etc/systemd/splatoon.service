@@ -1,0 +1,11 @@
+[Unit]
+Description=Splatoon API
+After=syslog.target network.target
+
+[Service]
+User=root
+Environment="PATH="
+ExecStart=/opt/splatoon_venv/etc/systemd/run_splatoon
+
+[Install]
+WantedBy=multi-user.target
