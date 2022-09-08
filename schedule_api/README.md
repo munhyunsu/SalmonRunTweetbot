@@ -32,6 +32,8 @@ cd ./etc/traefik/
 /opt/splatoon_venv/bin/python3 -m pip install --upgrade -r [PATH2requirements.txt]
 ```
 
+2. Copy and edit systemd, nginx conf file
+
 ```bash
 gunicorn -w 4 -k uvicorn.workers.UvicornWorker --chdir [PATH] main:app --bind 0.0.0.0:8888
 ```
