@@ -38,3 +38,19 @@ cd ./etc/traefik/
 gunicorn -w 4 -k uvicorn.workers.UvicornWorker --chdir [PATH] main:app --bind 0.0.0.0:8888
 ```
 
+# Splatoon Service using `systemd`
+
+```bash
+sudo cp $HOME/.../run_splatoon /opt/splatoon/etc/systemd/run_splatoon
+sudo cp $HOME/.../splatoon.service /opt/splatoon/etc/systemd/splatoon.service
+sudo chmod +x /opt/splatoonl/etc/systemd/run_splatoon
+```
+
+```bash
+sudo ln -s /opt/splatoon/etc/systemd/splatoon.service /etc/systemd/system/splatoon.service
+sudo systemctl daemon-reload
+sudo systemctl enable splatoon.service
+sudo systemctl start splatoon.service
+sudo systemctl status splatoon.service
+```
+
