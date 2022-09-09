@@ -45,8 +45,9 @@ def create_salmonrun(salmonrun: schemas.SalmonrunCreate, api_key: str, db: Sessi
         raise HTTPException(status_code=403, detail='API not authorized')
     db_salmonrun = crud.get_salmonrun_by_timestart(db, timestart=salmonrun.timestart)
     if db_salmonrun:
-        raise HTTPException(status_code=404, detail='timestart already registered')
-    return crud.create_salmonrun(db=db, salmonrun=salmonrun)
+        return crud.update_salmonrun(db=db, salmonrun=salmonrun)
+    else:
+        return crud.create_salmonrun(db=db, salmonrun=salmonrun)
 
 
 @app.get('/salmonrun/', response_model=list[schemas.Salmonrun])

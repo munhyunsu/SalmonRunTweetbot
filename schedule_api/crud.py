@@ -18,3 +18,15 @@ def create_salmonrun(db: Session, salmonrun: schemas.SalmonrunCreate):
     db.refresh(db_salmonrun)
     return db_salmonrun
 
+
+def update_salmonrun(db: Session, salmonrun: schemas.SalmonrunCreate):
+    db_salmonrun = db.query(models.Salmonrun).filter(models.Salmonrun.timestart == salmonrun.timestart).first()
+    db_salmonrun.timeend = salmonrun.timeend
+    db_salmonrun.stage = salmonrun.stage
+    db_salmonrun.weapon1 = salmonrun.weapon1
+    db_salmonrun.weapon2 = salmonrun.weapon2
+    db_salmonrun.weapon3 = salmonrun.weapon3
+    db_salmonrun.weapon4 = salmonrun.weapon4
+    db.commit()
+    db.refresh(db_salmonrun)
+    return db_salmonrun
