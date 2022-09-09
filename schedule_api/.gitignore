@@ -1,6 +1,7 @@
 # virtual env
 venv
 *.db
+traefik*
 
 # Swap
 [._]*.s[a-v][a-z]
