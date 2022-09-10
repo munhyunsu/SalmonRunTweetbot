@@ -1,6 +1,7 @@
 pip
 wheel
 gspread
+tweepy
 oauth2client
 sqlalchemy
 fastapi
