@@ -5,7 +5,7 @@ After=syslog.target network.target
 [Service]
 User=root
 Environment="PATH="
-ExecStart=/opt/splatoon_venv/etc/systemd/run_splatoon
+ExecStart=/opt/splatoon/etc/systemd/run_splatoon
 
 [Install]
 WantedBy=multi-user.target
