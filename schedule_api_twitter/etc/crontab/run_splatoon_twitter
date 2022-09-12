@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /opt/splatoon_venv
+source ./bin/activate
+
+cd PATH
+/opt/splatoon_venv/bin/python3 main.py --debug >> crontab.out
+
+# 0 * * * * ..../etc/crontab/run_splatoon_poster
