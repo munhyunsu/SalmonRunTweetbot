@@ -33,6 +33,9 @@ def main():
 
     timecurrent = int(time.time())
     timescurrent = get_time(timecurrent, tz=TZ_SEOUL)
+    if DEBUG:
+        print(f'[{time.time()-STIME}] {timecurrent=}')
+        print(f'[{time.time()-STIME}] {timescurrent=}')
 
     url = f'{config.endpoint}/salmonrun/'
     headers = {'accept': 'application/json'}
@@ -50,6 +53,9 @@ def main():
     # Dangeronous coding
     schedule1 = data[0]
     schedule2 = data[1]
+    if DEBUG:
+        print(f'[{time.time()-STIME}] {schedule1=}')
+        print(f'[{time.time()-STIME}] {schedule2=}')
 
     schedule1_timediff = timecurrent - schedule1['timestart']
 
@@ -74,6 +80,8 @@ def main():
 [다음 ~ {get_time(schedule2['timeend'], tz=TZ_SEOUL).strftime('%m/%d %H:%M')}]
 스테이지 - {schedule2['stage']}
 무기 - {schedule2['weapon1']}/{schedule2['weapon2']}/{schedule2['weapon3']}/{schedule2['weapon4']}'''
+    if DEBUG:
+        print(f'[{time.time()-STIME}] Tweet {text}')
     
     if len(text) > 0:
         client = tweepy.Client(consumer_key=config.consumer_key,
@@ -82,7 +90,6 @@ def main():
                                access_token_secret=config.access_token_secret)
         tres = client.create_tweet(text=text)
         if DEBUG:
-            print(f'[{time.time()-STIME}] Tweet {text}')
             print(f'[{time.time()-STIME}] Return {tres}')
 
 
