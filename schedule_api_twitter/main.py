@@ -47,8 +47,7 @@ def main():
         response = f.read().decode('utf-8')
         data = json.loads(response)
         if DEBUG:
-            print(f'[{time.time()-STIME}] Get')
-            pprint.pprint(f'{data}')
+            print(f'[{time.time()-STIME}] RESTful API: {data=}')
 
     # Dangeronous coding
     schedule1 = data[0]
@@ -58,6 +57,13 @@ def main():
         print(f'[{time.time()-STIME}] {schedule2=}')
 
     schedule1_timediff = timecurrent - schedule1['timestart']
+    if DEBUG:
+        print(f'[{time.time()-STIME}] {schedule1_timediff=}')
+        print(f'[{time.time()-STIME}] {config.time_maxdiff=}')
+        print(f'[{time.time()-STIME}] {config.status_hours=}')
+        print(f'[{time.time()-STIME}] {(abs(schedule1_timediff) < config.time_maxdiff)=}')
+        print(f'[{time.time()-STIME}] {(timescurrent.hour in config.status_hours)=}')
+
 
     text = ''
     if abs(schedule1_timediff) < config.time_maxdiff:
@@ -81,7 +87,7 @@ def main():
 스테이지 - {schedule2['stage']}
 무기 - {schedule2['weapon1']}/{schedule2['weapon2']}/{schedule2['weapon3']}/{schedule2['weapon4']}'''
     if DEBUG:
-        print(f'[{time.time()-STIME}] Tweet {text}')
+        print(f'[{time.time()-STIME}] Tweet {text=}')
     
     if len(text) > 0:
         client = tweepy.Client(consumer_key=config.consumer_key,
@@ -90,7 +96,7 @@ def main():
                                access_token_secret=config.access_token_secret)
         tres = client.create_tweet(text=text)
         if DEBUG:
-            print(f'[{time.time()-STIME}] Return {tres}')
+            print(f'[{time.time()-STIME}] Return {tres=}')
 
 
 if __name__ == '__main__':
