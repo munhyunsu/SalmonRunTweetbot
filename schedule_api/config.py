@@ -1,6 +1,3 @@
-address_api = '127.0.0.1' # Only localhost for serving
-port_api = 10008 # FastAPI serving port
-root_path = 'splatoon3/' # API endpoint for serving
-freshness = 60*60 # int (seconds)
+root_path = '/splatoon' # API endpoint for serving
 db_url = './app.db' # SQLite3 database for API app
-
+api_key = '' # using main_create_key.py
