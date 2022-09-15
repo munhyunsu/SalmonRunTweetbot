@@ -1,4 +1,5 @@
 import time
+import datetime
 from typing import Union
 
 from fastapi import Depends, FastAPI, HTTPException
@@ -9,6 +10,7 @@ from database import SessionLocal, engine
 import config
 import information
 
+TZ_SEOUL = datetime.timezone(datetime.timedelta(hours=9))
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -55,5 +57,8 @@ def read_salmonruns(timequery: Union[int, None] = None, db: Session = Depends(ge
     if timequery is None:
         timequery = int(time.time())
     salmonruns = crud.get_salmonruns(db, timequery=timequery)
+    for salmonrun in salmonruns:
+        salmonrun.iso8601start = datetime.datetime.fromtimestamp(salmonrun.timestart, tz=TZ_SEOUL)
+        salmonrun.iso8601end = datetime.datetime.fromtimestamp(salmonrun.timeend, tz=TZ_SEOUL)
     return salmonruns
 
