@@ -1,3 +1,5 @@
+import datetime
+
 from pydantic import BaseModel
 
 
@@ -16,6 +18,9 @@ class SalmonrunCreate(SalmonrunBase):
 
 
 class Salmonrun(SalmonrunBase):
+    iso8601start: datetime.datetime
+    iso8601end: datetime.datetime
+
     class Config:
         orm_mode = True
 
