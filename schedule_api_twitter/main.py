@@ -90,6 +90,8 @@ def main():
         print(f'[{time.time()-STIME}] Tweet {text=}')
     
     if len(text) > 0:
+        if DEBUG:
+            print(f'[{time.time()-STIME}] Ready to upload')
         client = tweepy.Client(consumer_key=config.consumer_key,
                                consumer_secret=config.consumer_secret,
                                access_token=config.access_token,
@@ -97,6 +99,9 @@ def main():
         tres = client.create_tweet(text=text)
         if DEBUG:
             print(f'[{time.time()-STIME}] Return {tres=}')
+    if DEBUG:
+        print(f'[{time.time()-STIME}] End main.py')
+        
 
 
 if __name__ == '__main__':
