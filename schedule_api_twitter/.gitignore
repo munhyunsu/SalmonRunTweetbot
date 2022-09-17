@@ -1,5 +1,6 @@
 venv
 *.out
+*.out.*
 
 # Swap
 [._]*.s[a-v][a-z]
