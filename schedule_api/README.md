@@ -7,7 +7,9 @@ python3 main_create_key.py
 
 2. Setting `sqlite3` database path (db\_url in `config.py`)
 
-# Simple run (development)
+# Run API server
+
+## Simple run (development)
 
 ```bash
 uvicorn main:app --reload --port 10009 --root-path '/splatoon'
@@ -20,7 +22,11 @@ cd ./etc/traefik/
 ../../traefik_v2.8.4_linux_amd64/traefik --configFile ./traefik.toml
 ```
 
-# Production mode (gunicorn)
+## Production mode (gunicorn)
+
+```bash
+
+```
 
 ## Downloads
 
