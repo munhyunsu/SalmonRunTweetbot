@@ -47,9 +47,13 @@ def create_salmonrun(salmonrun: schemas.SalmonrunCreate, api_key: str, db: Sessi
         raise HTTPException(status_code=403, detail='API not authorized')
     db_salmonrun = crud.get_salmonrun_by_timestart(db, timestart=salmonrun.timestart)
     if db_salmonrun:
-        return crud.update_salmonrun(db=db, salmonrun=salmonrun)
+        salmonrun = crud.update_salmonrun(db=db, salmonrun=salmonrun)
     else:
-        return crud.create_salmonrun(db=db, salmonrun=salmonrun)
+        salmonrun = crud.create_salmonrun(db=db, salmonrun=salmonrun)
+    salmonrun.iso8601start = datetime.datetime.fromtimestamp(salmonrun.timestart, tz=TZ_SEOUL)
+    salmonrun.iso8601end = datetime.datetime.fromtimestamp(salmonrun.timeend, tz=TZ_SEOUL)
+    return salmonrun
+
 
 
 @app.get('/salmonrun/', response_model=list[schemas.Salmonrun])
