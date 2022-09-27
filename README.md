@@ -1,3 +1,10 @@
+# Splatoon 3 Information Service
+
+## Splatoon 3 Salmonrun RESTful API
+
+
+--
+
 # SalmonRun Tweet Bot
 Salmon run reminder: Tweets salmon run schedule
 
