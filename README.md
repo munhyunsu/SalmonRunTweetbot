@@ -14,8 +14,8 @@ Salmon run reminder: Tweets salmon run schedule
 - Post Salmon run schedule and it's image
 
 ## TODO
-- (Pending) Using [routine](https://github.com/munhyunsu/routine)
-- (Pending) Change auto generated image layout
+- (Canceled) Using [routine](https://github.com/munhyunsu/routine)
+- (Canceled) Change auto generated image layout
   - Requested by User
 
 # Discord Chatting Bot
