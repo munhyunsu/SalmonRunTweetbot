@@ -1,7 +1,13 @@
 import os
+import time
+import datetime
 
 FLAGS = _ = None
 DEBUG = False
+STIME = time.time()
+
+TZ_SEOUL = datetime.timezone(datetime.timedelta(hours=9))
+TZ_UTC = datetime.timezone(datetime.timedelta())
 
 
 def main():
