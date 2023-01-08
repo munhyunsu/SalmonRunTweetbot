@@ -2,6 +2,10 @@ import os
 import time
 import datetime
 
+import gspread
+
+import config
+
 FLAGS = _ = None
 DEBUG = False
 STIME = time.time()
