@@ -10,6 +10,14 @@ TZ_SEOUL = datetime.timezone(datetime.timedelta(hours=9))
 TZ_UTC = datetime.timezone(datetime.timedelta())
 
 
+def get_time(timestamp, tz=TZ_UTC):
+    return datetime.datetime.fromtimestamp(timestamp, tz=tz)
+
+
+def get_unixtime(timestr):
+    return int(datetime.datetime.fromisoformat(timestr).timestamp())
+
+
 def main():
     if DEBUG:
         print(f'[{time.time()-STIME}] Parsed arguements {FLAGS}')
