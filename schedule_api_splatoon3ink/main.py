@@ -27,6 +27,13 @@ def main():
         print(f'[{time.time()-STIME}] Parsed arguements {FLAGS}')
         print(f'[{time.time()-STIME}] Unparsed arguements {_}')
 
+    gc = gspread.service_account(filename=FLAGS.service_account)
+    
+    sh = gc.open_by_key(config.sheet_key)
+    wsh = sh.worksheet('Queue')
+
+    list_of_dicts = []
+
 
 if __name__ == '__main__':
     import argparse
