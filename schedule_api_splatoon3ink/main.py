@@ -32,7 +32,22 @@ def main():
     sh = gc.open_by_key(config.sheet_key)
     wsh = sh.worksheet('Queue')
 
-    list_of_dicts = []
+    # Get written events
+    list_of_dicts = wsh.get_all_records()
+    queue = []
+
+    for item in list_of_dicts:
+        value = {'timestart': get_unixtime(item['Start Time']),
+                 'timeend': get_unixtime(item['End Time']),
+                 'stage': item['Stage'],
+                 'weapon1': item['Weapon 1'],
+                 'weapon2': item['Weapon 2'],
+                 'weapon3': item['Weapon 3'],
+                 'weapon4': item['Weapon 4'],
+                }
+        queue.append(value)
+
+    
 
 
 if __name__ == '__main__':
