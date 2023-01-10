@@ -34,7 +34,7 @@ def main():
 
     # Get written events
     list_of_dicts = wsh.get_all_records()
-    queue = []
+    queue = {}
 
     for item in list_of_dicts:
         value = {'timestart': get_unixtime(item['Start Time']),
@@ -45,8 +45,18 @@ def main():
                  'weapon3': item['Weapon 3'],
                  'weapon4': item['Weapon 4'],
                 }
-        queue.append(value)
+        queue[value['timestart']] = value
 
+    urllib_version = (f'Python-urllib/'
+                      f'{sys.version_info.major}.'
+                      f'{sys.version_info.minor}.'
+                      f'{sys.version_info.micro}')
+    headers = {'Accept': 'application/json',
+               'User-Agent': f'@SalmonRunKR;{urllib_version}'}
+
+    # GET locale data from splatoon3.ink
+
+    
     
 
 
