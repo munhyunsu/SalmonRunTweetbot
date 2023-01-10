@@ -52,7 +52,7 @@ def main():
                       f'{sys.version_info.minor}.'
                       f'{sys.version_info.micro}')
     headers = {'Accept': 'application/json',
-               'User-Agent': f'@SalmonRunKR;{urllib_version}'}
+               'User-Agent': f'{config.user_agent};{urllib_version}'}
 
     # GET locale data from splatoon3.ink
 
