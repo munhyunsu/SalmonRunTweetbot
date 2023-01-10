@@ -55,6 +55,16 @@ def main():
                'User-Agent': f'{config.user_agent};{urllib_version}'}
 
     # GET locale data from splatoon3.ink
+    url = f'{config.source_url}/locale/ko-KR.json'
+    req = urllib.request.Request(url=url,
+                                 headers=headers,
+                                 method='GET')
+    if DEBUG:
+        print(f'[{time.time()-STIME}] Request {url}')
+    with urllib.request.urlopen(req) as f:
+        locale = json.load(f.read().decode('utf-8'))
+    with open('ko-KR.locale', 'w') as f:
+        json.dumps(f, locale)
 
     
     
