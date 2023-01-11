@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import datetime
 
@@ -26,7 +27,7 @@ def main():
     if DEBUG:
         print(f'[{time.time()-STIME}] Parsed arguements {FLAGS}')
         print(f'[{time.time()-STIME}] Unparsed arguements {_}')
-
+    '''
     gc = gspread.service_account(filename=FLAGS.service_account)
     
     sh = gc.open_by_key(config.sheet_key)
@@ -46,7 +47,7 @@ def main():
                  'weapon4': item['Weapon 4'],
                 }
         queue[value['timestart']] = value
-
+    '''
     urllib_version = (f'Python-urllib/'
                       f'{sys.version_info.major}.'
                       f'{sys.version_info.minor}.'
