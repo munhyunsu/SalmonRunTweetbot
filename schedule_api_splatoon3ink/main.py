@@ -68,9 +68,10 @@ def main():
         with urllib.request.urlopen(req) as f:
             locale = json.loads(f.read().decode('utf-8'))
         with open('ko-KR.locale', 'w') as f:
-            json.dump(locale, f)
+            json.dump(locale, f, ensure_ascii=False, indent=True)
     with open('ko-KR.locale' ,'r') as f:
         locale = json.load(f)
+    print(locale)
 
     
     
