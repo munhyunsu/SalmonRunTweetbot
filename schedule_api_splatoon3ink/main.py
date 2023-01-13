@@ -72,8 +72,9 @@ def main():
     with open('ko-KR.json' ,'r') as f:
         locale = json.load(f)
     if DEBUG:
-        print(f'[{time.time()-STIME}] Read {url}')
+        print(f'[{time.time()-STIME}] Read ko-KR.json')
         print(f'{locale}')
+        print(f'----- -----')
         
 
     # GET schedule data from splatoon3.ink
@@ -91,8 +92,13 @@ def main():
     with open('schedules.json', 'r') as f:
         schedules = json.load(f)
     if DEBUG:
-        print(f'[{time.time()-STIME}] Read {url}')
-        print(f'{schedule}')
+        print(f'[{time.time()-STIME}] Read schedules.json')
+        print(f'{schedules}')
+        print(f'----- -----')
+    
+    new_queue = []
+    for node in schedules['data']['coopGroupingSchedule']['regularSchedules']['nodes']:
+        print(node)
         
 
         
