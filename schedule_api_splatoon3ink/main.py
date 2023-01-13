@@ -58,7 +58,7 @@ def main():
                'User-Agent': f'{config.user_agent};{urllib_version}'}
 
     # GET locale data from splatoon3.ink
-    if not os.path.exists('ko-KR.locale'):
+    if not os.path.exists('ko-KR.json'):
         url = f'{config.source_url}/locale/ko-KR.json'
         req = urllib.request.Request(url=url,
                                      headers=headers,
@@ -67,12 +67,26 @@ def main():
             print(f'[{time.time()-STIME}] Request {url}')
         with urllib.request.urlopen(req) as f:
             locale = json.loads(f.read().decode('utf-8'))
-        with open('ko-KR.locale', 'w') as f:
+        with open('ko-KR.json', 'w') as f:
             json.dump(locale, f, ensure_ascii=False, indent=True)
-    with open('ko-KR.locale' ,'r') as f:
+    with open('ko-KR.json' ,'r') as f:
         locale = json.load(f)
-    print(locale)
 
+    # GET schedule data from splatoon3.ink
+    if not os.path.exists('schedules.json'):
+        url = f'{config.source_url}/schedules.json'
+        req = urllib.request.Request(url=url,
+                                     headers=headers,
+                                     method='GET')
+        if DEBUG:
+            print(f'[{time.time()-STIME}] Request {url}')
+        with urllib.request.urlopen(req) as f:
+            schedules = json.loads(f.read().decode('utf-8'))
+        with open('schedules.json', 'w') as f:
+            json.dump(schedules, f)
+        
+
+        
     
     
 
