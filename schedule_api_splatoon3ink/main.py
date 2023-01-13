@@ -71,6 +71,10 @@ def main():
             json.dump(locale, f, ensure_ascii=False, indent=True)
     with open('ko-KR.json' ,'r') as f:
         locale = json.load(f)
+    if DEBUG:
+        print(f'[{time.time()-STIME}] Read {url}')
+        print(f'{locale}')
+        
 
     # GET schedule data from splatoon3.ink
     if not os.path.exists('schedules.json'):
@@ -83,7 +87,12 @@ def main():
         with urllib.request.urlopen(req) as f:
             schedules = json.loads(f.read().decode('utf-8'))
         with open('schedules.json', 'w') as f:
-            json.dump(schedules, f)
+            json.dump(schedules, f, ensure_ascii=False, indent=True)
+    with open('schedules.json', 'r') as f:
+        schedules = json.load(f)
+    if DEBUG:
+        print(f'[{time.time()-STIME}] Read {url}')
+        print(f'{schedule}')
         
 
         
