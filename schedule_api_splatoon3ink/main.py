@@ -97,8 +97,12 @@ def main():
         print(f'----- -----')
     
     new_queue = []
-    for node in schedules['data']['coopGroupingSchedule']['regularSchedules']['nodes']:
-        print(node)
+    coop_schedules = schedules['data']['coopGroupingSchedule']
+    coop_types = ['regularSchedules', 'bigRunSchedules']
+    for coop_type in coop_types:
+        for node in coop_schedules[coop_type]['nodes']:
+            print(coop_type, node)
+        
         
 
         
