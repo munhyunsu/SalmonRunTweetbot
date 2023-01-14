@@ -101,7 +101,8 @@ def main():
     coop_types = ['regularSchedules', 'bigRunSchedules']
     for coop_type in coop_types:
         for node in coop_schedules[coop_type]['nodes']:
-            print(coop_type, node)
+            start_time = node['startTime'].replace('Z', '+00:00')
+            print(coop_type, node, get_unixtime(start_time))
         
         
 
