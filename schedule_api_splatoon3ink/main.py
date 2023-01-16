@@ -101,12 +101,12 @@ def main():
     coop_types = ['regularSchedules', 'bigRunSchedules']
     for coop_type in coop_types:
         for node in coop_schedules[coop_type]['nodes']:
-            start_time = node['startTime'].replace('Z', '+00:00')
+            start_time_utc = node['startTime'].replace('Z', '+00:00')
+            start_unixtime = get_unixtime(start_time_utc)
+            start_time_seoul = get_time(start_unixtime, tz=TZ_SEOUL)
             if DEBUG:
                 print(f'[{time.time()-STIME}] Read {coop_type} node')
-                print(node,
-                      get_unixtime(start_time),
-                      get_time(get_unixtime(start_time), tz=TZ_SEOUL))
+                print(node, start_unixtime, start_time_utc, start_time_seoul)
 
         
         
