@@ -110,7 +110,7 @@ def main():
             stage_id = node['setting']['coopStage']['id']
             stage_kr = locale['stages'][stage_id]['name']
             weapons_id = []
-            for weapon in nodel['settings']['weapons']:
+            for weapon in node['setting']['weapons']:
                 weapons_id.append(weapon['__splatoon3ink_id'])
             weapons_kr = []
             for weapon_id in weapons_id:
