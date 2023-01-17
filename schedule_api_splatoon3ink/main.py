@@ -104,9 +104,24 @@ def main():
             start_time_utc = node['startTime'].replace('Z', '+00:00')
             start_unixtime = get_unixtime(start_time_utc)
             start_time_seoul = get_time(start_unixtime, tz=TZ_SEOUL)
+            end_time_utc = node['endTime'].replace('Z', '+00:00')
+            end_unixtime = get_unixtime(end_time_utc)
+            end_time_seoul = get_time(end_unixtime, tz=TZ_SEOUL)
+            stage_id = node['setting']['coopStage']['id']
+            stage_kr = locale['stages'][stage_id]['name']
+            weapons_id = []
+            for weapon in nodel['settings']['weapons']:
+                weapons_id.append(weapon['__splatoon3ink_id'])
+            weapons_kr = []
+            for weapon_id in weapons_id:
+                weapons_kr.append(locale['weapons'][weapon_id]['name'])
             if DEBUG:
                 print(f'[{time.time()-STIME}] Read {coop_type} node')
-                print(node, start_unixtime, start_time_utc, start_time_seoul)
+                print(f'[{time.time()-STIME}] Start Time: {start_time_seoul}')
+                print(f'[{time.time()-STIME}] End Time: {end_time_seoul}')
+                print(f'[{time.time()-STIME}] Stage: {stage_kr}')
+                print(f'[{time.time()-STIME}] Weapons: {weapons_kr}')
+                print(f'{node}')
 
         
         
