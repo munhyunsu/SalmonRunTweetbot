@@ -122,8 +122,8 @@ def main():
                 print(f'[{time.time()-STIME}] Stage: {stage_kr}')
                 print(f'[{time.time()-STIME}] Weapons: {weapons_kr}')
                 #print(f'{node}')
-            new_queue.append({'Start Time': start_time_seoul,
-                              'End Time': end_time_seoul,
+            new_queue.append({'Start Time': start_time_seoul.isoformat(),
+                              'End Time': end_time_seoul.isoformat(),
                               'Stage': stage_kr,
                               'Weapon 1': weapons_kr[0],
                               'Weapon 2': weapons_kr[1],
