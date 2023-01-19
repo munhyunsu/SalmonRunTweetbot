@@ -29,7 +29,7 @@ def main():
     if DEBUG:
         print(f'[{time.time()-STIME}] Parsed arguements {FLAGS}')
         print(f'[{time.time()-STIME}] Unparsed arguements {_}')
-    '''
+
     gc = gspread.service_account(filename=FLAGS.service_account)
     
     sh = gc.open_by_key(config.sheet_key)
@@ -49,7 +49,7 @@ def main():
                  'weapon4': item['Weapon 4'],
                 }
         queue[value['timestart']] = value
-    '''
+
     urllib_version = (f'Python-urllib/'
                       f'{sys.version_info.major}.'
                       f'{sys.version_info.minor}.'
@@ -103,6 +103,8 @@ def main():
         for node in coop_schedules[coop_type]['nodes']:
             start_time_utc = node['startTime'].replace('Z', '+00:00')
             start_unixtime = get_unixtime(start_time_utc)
+            if start_unixtime in queue.keys():
+                continue
             start_time_seoul = get_time(start_unixtime, tz=TZ_SEOUL)
             end_time_utc = node['endTime'].replace('Z', '+00:00')
             end_unixtime = get_unixtime(end_time_utc)
@@ -134,6 +136,7 @@ def main():
                               stage_kr,
                               weapons_kr[0], weapons_kr[1],
                               weapons_kr[2], weapons_kr[3],))
+
 
     if DEBUG:
         print(f'[{time.time()-STIME}] New Queue: {new_queue}')
