@@ -137,9 +137,12 @@ def main():
                               weapons_kr[0], weapons_kr[1],
                               weapons_kr[2], weapons_kr[3],))
 
-
     if DEBUG:
-        print(f'[{time.time()-STIME}] New Queue: {new_queue}')
+        print(f'[{time.time()-STIME}] Append New Queue to wsh: {new_queue}')
+
+    wsh.append_rows(new_queue,
+                    value_input_option=gspread.utils.ValueInputOption.user_entered)
+    
 
 
 
