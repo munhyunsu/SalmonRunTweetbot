@@ -142,8 +142,9 @@ def main():
 
     wsh.append_rows(new_queue,
                     value_input_option=gspread.utils.ValueInputOption.user_entered)
-    
 
+    if DEBUG:
+        print(f'[{time.time()-STIME}] Done job for uploading {len(new_queue)} schedules')
 
 
 if __name__ == '__main__':
