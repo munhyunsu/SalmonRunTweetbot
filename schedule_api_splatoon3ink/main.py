@@ -58,7 +58,7 @@ def main():
                'User-Agent': f'{config.user_agent};{urllib_version}'}
 
     # GET locale data from splatoon3.ink
-    if not os.path.exists('ko-KR.json'):
+    if not os.path.exists('ko-KR.json') or not FLAGS.local:
         url = f'{config.source_url}/locale/ko-KR.json'
         req = urllib.request.Request(url=url,
                                      headers=headers,
@@ -73,12 +73,11 @@ def main():
         locale = json.load(f)
     if DEBUG:
         print(f'[{time.time()-STIME}] Read ko-KR.json')
-        print(f'{locale}')
-        print(f'----- -----')
-        
+        #print(f'{locale}')
+        #print(f'----- -----')
 
     # GET schedule data from splatoon3.ink
-    if not os.path.exists('schedules.json'):
+    if not os.path.exists('schedules.json') or not FLAGS.local:
         url = f'{config.source_url}/schedules.json'
         req = urllib.request.Request(url=url,
                                      headers=headers,
@@ -93,8 +92,8 @@ def main():
         schedules = json.load(f)
     if DEBUG:
         print(f'[{time.time()-STIME}] Read schedules.json')
-        print(f'{schedules}')
-        print(f'----- -----')
+        #print(f'{schedules}')
+        #print(f'----- -----')
     
     new_queue = []
     coop_schedules = schedules['data']['coopGroupingSchedule']
@@ -157,6 +156,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--debug', action='store_true',
                         help='The present debug message')
+    parser.add_argument('--local', action='store_true',
+                        help='Use local saved file for DEBUG')
     parser.add_argument('--service_account', default='./service_account.json',
                         help='The service account json file that was downloaded from Google API')
 
