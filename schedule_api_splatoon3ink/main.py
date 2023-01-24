@@ -139,8 +139,9 @@ def main():
     if DEBUG:
         print(f'[{time.time()-STIME}] Append New Queue to wsh: {new_queue}')
 
-    wsh.append_rows(new_queue,
-                    value_input_option=gspread.utils.ValueInputOption.user_entered)
+    if len(new_queue) > 0:
+        wsh.append_rows(new_queue,
+                        value_input_option=gspread.utils.ValueInputOption.user_entered)
 
     if DEBUG:
         print(f'[{time.time()-STIME}] Done job for uploading {len(new_queue)} schedules')
