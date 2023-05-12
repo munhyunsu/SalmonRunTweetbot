@@ -96,7 +96,10 @@ def main():
                                consumer_secret=config.consumer_secret,
                                access_token=config.access_token,
                                access_token_secret=config.access_token_secret)
-        tres = client.create_tweet(text=text)
+        try:
+            tres = client.create_tweet(text=text)
+        except tweepy.errors.Unauthorized as e:
+            tres = f'{e}'
         if DEBUG:
             print(f'[{time.time()-STIME}] Return {tres=}')
     if DEBUG:
