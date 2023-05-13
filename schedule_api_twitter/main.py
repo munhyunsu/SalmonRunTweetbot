@@ -89,6 +89,9 @@ def main():
     if DEBUG:
         print(f'[{time.time()-STIME}] Tweet {text=}')
     
+    if FLAGS.text is not None:
+        text = FLAGS.text
+
     if len(text) > 0:
         if DEBUG:
             print(f'[{time.time()-STIME}] Ready to upload')
@@ -117,6 +120,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--debug', action='store_true',
                         help='The present debug message')
+    parser.add_argument('--text', type=str,
+                        help='(Forced) upload text')
 
     FLAGS, _ = parser.parse_known_args()
     DEBUG = FLAGS.debug
